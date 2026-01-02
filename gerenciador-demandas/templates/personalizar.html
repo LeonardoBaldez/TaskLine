@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Personalização</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/loading.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/personalizar.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="/static/img/DL.png" />
+</head>
+<body>
+    <!-- loading -->
+        <!-- loading -->
+            <!-- loading -->
+    <div class="loading-container">
+        <div class="containerLogo">
+            <img src="" alt="Logo" class="logoLoading">
+        </div>
+        <h3>Carregando...</h3>
+    </div>
+            <!-- loading -->
+        <!-- loading -->
+    <!-- loading -->
+    <div class="global">
+        <div class="containerTitle">
+            <h1>Personalização</h1>
+        </div>
+        <div class="containerEtapas">
+                <div class="etapa" id="cores">
+                    <i class="fa-solid fa-palette"></i>
+                </div>
+                <div class="tracin"></div>
+                <div class="etapa" id="setores">
+                    <i class="fas fa-sitemap"></i>
+                </div>
+                <div class="tracin"></div>
+                <div class="etapa" id="areas">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="tracin"></div>
+                <div class="etapa" id="admnistrador">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+        </div>
+        <div class="containerBoxes">
+            <!-- Bloco de seleção de cores  -->
+                <!-- Bloco de seleção de cores  -->
+                    <!-- Bloco de seleção de cores  -->
+                <div class="containerBoxCores">
+                    <div class="boxNomeEmpresa">
+                        <h3><i class="fa-solid fa-city"></i>  Insira o nome da sua empresa:</h3>
+                        <div class="contenInput">
+                            <input type="text" class="nomeEmpresa" placeholder="Nome da empresa">
+                        </div>
+                    </div>
+                    <div class="boxLogo">
+                        <h3><i class="fa-solid fa-copyright"></i>  Insira a logo da sua empresa (.png ou .jpeg):</h3>
+                        <div class="contenInputLogo">
+                            <input type="file" class="logoEmpresa" accept="image/*">
+                            <div class="containerPreviw">
+                                <img src="" alt="" class="logoPreview">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boxCores">
+                        <h3><i class="fa-solid fa-palette"></i>  Selecione a paleta de cores:</h3>
+                        <div class="contenCores">
+                            <div class="color-options" id="colorOptions">
+                                <div class="color-option selected" data-value= 1>
+                                    <div class="color-circle" style="background-color: #242f4d; border: solid 0.15rem #B89A5F;"></div>
+                                    <div class="color-label">Azul</div>
+                                </div>
+                                <div class="color-option" data-value=2>
+                                    <div class="color-circle" style="background-color: #492D1A; border: solid 0.15rem #FEF9EF;"></div>
+                                    <div class="color-label">Marrom</div>
+                                </div>
+                                <div class="color-option" data-value=3>
+                                    <div class="color-circle" style="background-color: #610a16ff; border: solid 0.15rem #88693bff;"></div>
+                                    <div class="color-label">Vermelho</div>
+                                </div>
+                                <div class="color-option" data-value=4>
+                                    <div class="color-circle" style="background-color: #113c25; border: solid 0.15rem #B89A5F;"></div>
+                                    <div class="color-label">Verde</div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="cores" id="selectedColor" value="1">
+                        </div>
+                    </div>
+                    <button class="btnCorParaSetor">Próximo</button>
+                </div>
+                    <!-- Bloco de seleção de cores  -->
+                <!-- Bloco de seleção de cores  -->
+            <!-- Bloco de seleção de cores  -->
+
+            <!-- Bloco de criação de setores -->
+                <!-- Bloco de criação de setores -->
+                    <!-- Bloco de criação de setores -->
+                    <div class="containerBoxSetores">
+                        <h3><i class="fas fa-sitemap"></i>  Crie os setores da empresa:</h3>
+                        <div class="boxSetores">
+                            <button class="addSetor" onclick="addSetor()">Adicionar Setor +</button>
+                            <div class="containerTableSetores">
+                                <div class="setor">
+                                    <p>Setor:</p>
+                                    <input class="inputSetor" type="text">
+                                    <i class="fa-solid fa-circle-minus firstIconMinus"></i>
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="containerButons">
+                            <button class="btnSetorParaCores">Voltar</button>
+                            <button class="btnSetorParaAreas" onclick="atualizarSelectsDeSetores()">Próximo</button>
+                        </div>                                    
+                    </div>
+                    <!-- Bloco de criação de setores -->
+                <!-- Bloco de criação de setores -->
+            <!-- Bloco de criação de setores -->
+
+            <!-- Bloco de criação de areas -->
+                <!-- Bloco de criação de areas -->
+                    <!-- Bloco de criação de areas -->
+                    <div class="containerBoxAreas">
+                        <h3><i class="fas fa-globe"></i>  Criação dos tipos de demanda:</h3>
+                        <button class="addArea" onclick="addArea()">Adicionar tipo de demanda +</button>
+                        <div class="boxAreas">
+                            <!--Preenchimento pelo js -->
+                        <details class="detailsArea">
+                            <summary>
+                                <div class="containerAddArea">
+                                    <div class="containerNomeArea">
+                                        <p>Tipo de demanda:</p>
+                                        <input type="text" class="inputArea">
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-down iconChevron"></i>
+                            </summary>
+                            <button class="addEtapa">
+                                    Adicionar Etapa +
+                            </button>
+                            <div class="containerEtapasDemanda">
+                                <div class="etapaDemandaCriacao">
+                                    <div class="nomeEtapa">
+                                        Nome da etapa:
+                                        <input disabled="" type="text" class="inputEtapa" value="Criação de demanda">
+                                    </div>
+                                    
+                                    <div class="etapaValidacao">
+                                        Validação:
+                                        <label class="checkbox-wrapper">
+                                            <input type="checkbox" class="inputValidacao">
+                                            <span class="custom-checkbox"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                        </div>
+                        <div class="containerButons">
+                            <button class="btnAreaParaSetor">Voltar</button>
+                            <button class="btnAreaParaAdm" onclick="preencherSetoresAdm()">Próximo</button>
+                        </div>
+                    </div>
+                    <!-- Bloco de criação de areas -->
+                <!-- Bloco de criação de areas -->
+            <!-- Bloco de criação de areas -->
+
+            <!-- Bloco de personalização do admnistrador -->
+                <!-- Bloco de personalização do admnistrador -->
+                    <!-- Bloco de personalização do admnistrador -->
+                    <div class="containerBoxAdm">
+                        <h3><i class="fa-solid fa-user-secret"></i>  Personalização do admnistrador:</h3>
+                        <div class="boxAdm">
+                            <div class="lineInputs">
+                                <div>
+                                    <p>Nome:</p>
+                                    <input type="text" class="inputAdm" id="nomeAdm" placeholder="Jhon Doe" value="{{current_user.nome}}">
+                                </div>
+                                <div>
+                                    <p>Email:</p>
+                                    <input type="text" class="inputAdm" id="email" placeholder="jhonDoe@gmail.com" value="{{current_user.email}}">
+                                </div>
+                            </div>
+                            <div class="lineInputs">
+                                <div>
+                                    <p>Telefone:</p>
+                                    <input type="text" class="inputAdm inputsTelefone" id="telefone" placeholder="(00) 0000-0000" value="{{current_user.telefone}}">
+                                </div>
+                                <div>
+                                    <p>Whatsapp:</p>
+                                    <input type="text" class="inputAdm inputsTelefone" id="whatsapp" placeholder="(00) 0 0000-0000" value="{{current_user.whatsapp}}">
+                                </div>
+                            </div>
+                            <div class="lineSelect">
+                                <p>Setores:</p>
+                                <div class="containerSetores">
+                                    <div class="opcaoSetor">
+                                        <p class="nomeSetor">Automação</p>
+                                        <label class="checkbox-wrapper">
+                                            <input type="checkbox" class="inputSetorAdm">
+                                            <span class="custom-checkbox"></span>
+                                        </label>
+                                    </div>
+                                    
+
+                                </div>
+                                <!-- <select class="selectSetor" id="setorAdm"></select> -->
+                            </div>
+                        </div>
+                        <div class="containerButons">
+                            <button class="btnAdmParaArea">Voltar</button>
+                            <button class="btnAdmParaLogin">Salvar</button>
+                        </div>
+                    </div>
+                    <!-- Bloco de personalização do admnistrador -->
+                <!-- Bloco de personalização do admnistrador -->
+            <!-- Bloco de personalização do admnistrador -->
+        </div>
+
+    </div>
+    
+
+    <script src="/static/js/personalizar.js"></script>
+    <script src='/static/js/loading.js'></script>
+    <script>
+        const userId = current_user.id ;
+    </script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+:root {
+    --fundoGerenciador: var(--fundoGerenciador);
+    --corPrincipal: var(--corPrincipal);
+    --corSecundaria: var(--corSecundaria);
+    --sombraSecundaria: var(--sombraSecundaria);
+}
+/* Loading */
+/* Loading */
+/* Loading */
+.loading-container {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    background-color: var(--corPrincipal);
+    opacity: 0.99;
+}
+.loading-container h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--corSecundaria);
+}
+.containerLogo {
+    position: relative;
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    animation: fadeIn 1.5s ease-in-out;
+}
+.containerLogo::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 5px solid transparent;
+    border-top: 5px solid #B89A5F;
+    box-shadow: 0 0 1rem #B89A5F;
+    border-radius: 50%;
+    animation: girar 1.5s linear infinite;
+}
+.logoLoading {
+    max-width: 85%;
+    max-height: 85%;
+    /* Mantém a proporção da imagem */
+    height: auto; 
+    /* Boa prática para garantir que a imagem se ajuste sem distorcer */
+    object-fit: contain;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5rem);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0rem);
+    }
+}
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+/* TOP BAR */
+    /* TOP BAR */
+        /* TOP BAR */
+#notificationPanel {
+    position: fixed;
+    top: 7vh;
+    right: 7.5vw;
+    width: 25vw;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0);
+    border-radius: 0.3vw;
+    padding: 0.5vw;
+    z-index: 999999;
+    display: none;
+}
+
+#notificationList {
+    max-height: 40vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5vw;
+    margin: 0;
+    padding: 0;
+}
+#notificationList::-webkit-scrollbar {
+    display: none;
+}
+
+.containerNotificacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border-radius: 0.3vw;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+    background-color: var(--corPrincipal);
+    color: white;
+}
+.containerNotificacao:hover {
+    color: var(--corSecundaria);
+}
+.lida {
+    background-color: #454545;
+    color: white;
+}
+.msgNotificacao {
+    width: 70%;
+    text-align: center;
+    margin: 0;
+    padding: 0.2vw;
+    box-sizing: border-box;
+    font-size: 1vw;
+    font-weight: 500;
+    text-align: center;
+}
+.horarioNotificacao {
+    width: 30%;
+    text-align: center;
+    margin: 0;
+    padding: 0.2vw;
+    box-sizing: border-box;
+    font-size: 0.8vw;
+    font-weight: 500;
+    text-align: center;
+}
+
+.visible {
+    display: block !important;
+}
+.hidden {
+    display: none !important;
+}
+#notificationBadge {
+    position: absolute;
+    top: 1vh;
+    right: 18.6vw;
+    background-color: red;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 800;
+    border-radius: 50%;
+    padding: 5px 7px;
+    display: inline-block;
+}
+
+.topBar {
+    width: 100%;
+    height: 8%;
+    background-color: var(--corPrincipal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icons {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.icons i {
+    font-size: 1.5vw;
+    color: var(--corSecundaria);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.icons i:hover {
+    text-shadow: 0px 0px 5px var(--corSecundaria);
+}
+.containerLogoTopBar {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+.logoTopBar {
+    scale: 0.35;
+}
+
+.popupResposta {
+    width: 30%;
+    height: object-fit;
+    outline: none;
+    background-color: white;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0);
+    margin: 0;
+    position: fixed;
+    top: 40%;
+    left: 35%;
+}
+.contentPopupResposta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+.titlePopupResposta {
+    margin: 0;
+    padding: 0;
+    color: var(--corPrincipal);
+    font-size: 2rem;
+    font-weight: 700;
+}
+.msgResposta {
+    color: var(--corPrincipal);
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+}
+.fecharPopupResposta {
+    padding-inline: 1rem;
+    border-radius: 0.2rem;
+    background-color: var(--corPrincipal);
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    border-radius: 2rem;
+    color: var(--corSecundaria);
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+    /* Sombra inicial suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.fecharPopupResposta:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-2px);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.fecharPopupResposta:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.popupConfirmacao {
+    width: 30%;
+    height: 25%;
+    outline: none;
+    background-color: white;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0);
+    margin: 0;
+    position: absolute;
+    top: 37.5%;
+    left: 35%;
+}
+.contentPopupConfirmacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+.titlePopupConfirmacao {
+    margin: 0;
+    padding: 0;
+    color: var(--corPrincipal);
+    font-size: 2rem;
+    font-weight: 700;
+}
+.msgPopupConfirmacao {
+    color: var(--corPrincipal);
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+}
+.containerBtnConfirmacao {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.btnConfirmacao {
+    padding: 0.5rem;
+    padding-inline: 1rem;
+    border-radius: 0.2rem;
+    background-color: var(--corPrincipal);
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    color: var(--corSecundaria);
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+    /* Sombra inicial suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.btnConfirmacao:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-2px);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.btnConfirmacao:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.btnCancelConfirmacao {
+    padding: 0.5rem;
+    padding-inline: 1rem;
+    border-radius: 0.2rem;
+    background-color: transparent;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: solid 0.15rem var(--corPrincipal);
+    outline: none;
+    border-radius: 1rem;
+    color: var(--corPrincipal);
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+    /* Sombra inicial suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.btnCancelConfirmacao:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-2px);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.btnCancelConfirmacao:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

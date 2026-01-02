@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Perfil</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/perfil.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/loading.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="/static/img/DL.png" />
+</head>
+<body>
+    <!-- loading -->
+        <!-- loading -->
+            <!-- loading -->
+            <div class="loading-container">
+                <div class="containerLogo">
+                    <img src="" alt="Logo" class="logoLoading">
+                </div>
+                <h3>Carregando...</h3>
+            </div>
+            <!-- loading -->
+        <!-- loading -->
+    <!-- loading -->
+    
+    <div class="global">
+        <div class="topBar">
+            <div class="containerLogoTopBar">
+                <a href="/app/home"><img class="logoTopBar" src=""></a>
+            </div>
+            <div class="icons">
+            <!-- icon notificações -->
+                <input type="text" id="dadosNotificacoes" value='{{notificacoes|tojson|safe}}' hidden>
+                <i class="fa-solid fa-bell" id="notificationIcon"> 
+                    <span id="notificationBadge" class="hidden"> ! </span>
+                </i>
+            <!-- icon home -->
+                <a href="/app/home"><i class="fa-solid fa-house"></i></a>
+            <!-- icon de perfil -->
+                <a href="/app/perfil" onclick="mostrarLoading()"><i class="fa-solid fa-user" id="userIcon"></i></a>
+            <!-- icone de sair -->
+                <a id="logoutButton" title="Sair"><i class="fa-solid fa-door-open" onclick="mostrarLoading()"></i></a>
+            </div>
+            <div id="notificationPanel">
+                <div id="notificationList">
+                    <!-- Preencher dinamicamente para alterações de ícones -->
+                </div>
+            </div>
+        </div>
+        <div class="containerBlocks">
+            <div class="blockLeft">
+                <div class="blockPic">
+                    <div class="pic">
+                        <i class="fa-solid fa-user" id="userIcon"></i>
+                    </div>
+                    <div class="textPic">
+                        <h3>{{current_user.nome}}</h3>
+                        <h3>Belo Horizonte, MG</h3>
+                    </div>
+                </div>
+                <div class="blockSocialMedia">
+                    <div class="redes">
+                        <div class="iconName">
+                            <i class="fa-solid fa-phone"></i>
+                            <p>Telefone</p> 
+                        </div>
+                        <p>{{current_user.telefone}}</p>
+                    </div>
+                    <div class="redes">
+                        <div class="iconName">
+                            <i class="fa-solid fa-envelope"></i>
+                            <p>Email</p> 
+                        </div>
+                        <p title="{{current_user.email}}" id="emailUser">{{current_user.email}}</p>
+                    </div>
+                    <div class="redes">
+                        <div class="iconName">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <p>Whatsapp</p> 
+                        </div>
+                        <p>{{current_user.whatsapp}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="blockRight">
+                <div class="blockInfos">
+                    <div class="infos">
+                        <p class="infoNome">Nome da empresa:</p>
+                        <input class="inputInfoNome" type="text" disabled value="">
+                    </div>
+                    <div class="infos">
+                        <p class="infoRepresentante">Usuário:</p>
+                        <input class="inputInfoRepresentante" type="text" disabled value="{{current_user.nome}}">
+                    </div>
+                    <div class="infos">
+                        <p class="infoSetor">Setor:</p>
+                        <input class="inputInfoSetor" type="text" disabled value="{{ ', '.join(setores) }}">
+                    </div>
+                    <div class="infos">
+                        <p class="infoCpfCnpj">CNPJ/CPF:</p>
+                        <input class="inputInfoCpfCnpj inputsCpf" type="text" disabled value="{{current_user.registro}}">
+                    </div>
+                    <div class="buttons">
+                        {% if current_user.permissao_adm %}
+                        <button class="btnCadastrar" id="abrirBtn" onclick="abrirPopupUser()">Usuários</button>
+                        <button class="btnEmpresa" onclick="abrirPopupEmpresa()">Empresa</button>
+                        {% endif %}
+                        <button class="btnPopupRelatorio" onclick="abrirPopupLogs()">Relatório</button>
+                    </div>
+                </div>
+                    <div class="blockLog">
+                        <div class="containerLog">
+
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+        <div class="containerPopupCadastro">
+            <div class="popupCadastro">
+                <span class="closeCadastro" onclick="fecharPopupCadastro()">&times;</span>
+                <div class="blockInputs">
+                    <div class="lineInputs">
+                        <div class="boxInput">
+                            <h3><i class="fas fa-user"></i> Nome:</h3>
+                            <input type="text" class="inputsCadastro" id="inputNome" placeholder="Digite o nome" autocomplete="off">
+                        </div>
+                        <div class="boxInput">
+                            <h3><i class="fas fa-id-card"></i> CNPJ/CPF:</h3>
+                            <input type="text" class="inputsCadastro inputsCpf" id="inputRegistro"  placeholder="Digite o CNPJ/CPF" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="lineInputs">
+                        <div class="boxInput">
+                            <h3><i class="fab fa-whatsapp"></i> Telefone Whatsapp:</h3>
+                            <input type="text" class="inputsCadastro inputsTelefone" id="inputWhatsapp" placeholder="(99) 9 9999-9999" autocomplete="off">
+                        </div>
+                        <div class="boxInput">
+                            <h3><i class="fas fa-phone"></i> Telefone fixo:</h3>
+                            <input type="text" class="inputsCadastro inputsTelefone" id="inputTelefone" placeholder="(99) 9999-9999" autocomplete="off">
+                            <div class="checkRepresentante">
+                                <p>Mesmo do Whatsapp</p>
+                                <input type="checkbox" id="mesmoNumero">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lineSolo">
+                        <div class="boxInput">
+                            <h3><i class="fas fa-envelope"></i> Email de contato:</h3>
+                            <input type="text" class="inputsCadastro" id="inputEmail" placeholder="Digite o e-mail" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+                <div class="blockInputSolo">
+                    <h3><i class="fas fa-layer-group"></i>  Selecione os setores do usuário:</h3>
+                    <div class="containerSetores">
+                        <div class="boxTitleSetores">
+                            <p>Setores</p>
+                            <p>Gestor</p>
+                        </div>
+                        <div class="blockSetor">
+                            <!-- Preenchido dinamicamente -->
+                        </div>
+                    </div>
+                </div>
+                <div class="blockButton">
+                    <button class="CriarUser" onclick="cadastrarUsuario()">Criar</button>
+                </div>
+            </div>
+        </div>
+        <dialog id="popupUsers" class="popupUsers">
+            <span class="closeUser" onclick="fecharPopupUser()">&times;</span>
+            <h1 class="titleUser">Gerenciamento de Usuários</h1>
+            <div class="tableUsers">
+                <div class="lineTitleUser">
+                    <p class="titleTableUser">Nome</p>
+                    <p class="titleTableUser">Setores</p>
+                    <p class="titleTableUser">Email</p>
+                    <p class="titleTableUser">Telefone</p>
+                    <p class="titleTableUser">Whatsapp</p>
+                    <p class="titleTableUser">CNPJ/CPF</p>
+                    <p class="titleTableUser">Editar</p>
+                    <p class="titleTableUser">Excluir</p>
+                </div>
+                <div class="containerUsers">
+                    <div class="lineUser">
+                        
+                    </div>
+                </div>
+            </div>
+            <button class="btnCadastro" id="btnCadastro" onclick="abrirPopupCadastro()">Criar Usuário</button>
+        </dialog>
+        <dialog class="popupEditarUser">
+            <span class="closeUser" onclick="fecharPopupEditarUser()">&times;</span>
+            <h1 class="titleEditarUser">Editar Usuário</h1>
+                <div class="lineInputsUser">
+                    <div class="boxInputUser">
+                        <h3><i class="fas fa-user"></i> Nome:</h3>
+                        <input type="text" class="inputsCadastro" id="inputNomeUser" placeholder="Digite o nome" autocomplete="off">
+                    </div>
+                    <div class="boxInputUser">
+                        <h3><i class="fas fa-id-card"></i> CNPJ/CPF:</h3>
+                        <input type="text" class="inputsCadastro inputsCpf" id="inputRegistroUser"  placeholder="Digite o CNPJ/CPF" autocomplete="off">
+                    </div>
+                </div>
+                <div class="lineInputsUser">
+                    <div class="boxInputUser">
+                        <h3><i class="fab fa-whatsapp"></i> Telefone Whatsapp:</h3>
+                            <input type="text" class="inputsCadastro inputsTelefone" id="inputWhatsappUser" placeholder="(99) 9 9999-9999" autocomplete="off">
+                    </div>
+                    <div class="boxInputUser">
+                        <h3><i class="fas fa-phone"></i> Telefone fixo:</h3>
+                        <input type="text" class="inputsCadastro inputsTelefone" id="inputTelefoneUser" placeholder="(99) 9999-9999" autocomplete="off">
+                    </div>
+                </div>
+                <div class="lineInputsUser">
+                    <div class="boxInputUser">
+                        <h3><i class="fas fa-envelope"></i> Email de contato:</h3>
+                        <input type="text" class="inputsCadastro" id="inputEmailUser" placeholder="Digite o e-mail" autocomplete="off">
+                    </div>
+                </div>
+                <div class="blockInputSoloUser">
+                    <h3><i class="fas fa-layer-group"></i>  Selecione os setores do usuário:</h3>
+                    <div class="containerSetoresUser">
+                        <div class="boxTitleSetoresUser">
+                            <p>Setores</p>
+                            <p>Gestor</p>
+                        </div>
+                        <div class="blockSetorUser">
+                            <!-- Preenchido dinamicamente -->
+                        </div>
+                    </div>
+                </div>
+            <div class="blockButton">
+                <button class="CriarUser" onclick="salvarUsuarioEditado()">Salvar</button>
+            </div>
+        </dialog>
+        <!-- Popup de edição da empresa -->
+        <dialog class="popupEmpresa">
+            <button id="editarAreas" class="btn-aba btn-inativo">Editar Áreas</button>
+            <button id="editarPersonalizacao" class="btn-aba btn-ativo">Editar Personalização</button>
+            <span class="closeEmpresa" onclick="fecharPopupEditarEmpresa()">&times;</span>
+            <div class="popup-content-wrapper">
+                <div class="blockCorNome">
+                    <h1 class="titleEditarEmpresa"><i class="fa-solid fa-city"></i> Editar Empresa</h1>
+                    <div class="boxNomeEmpresa">
+                        <h3><i class="fa-solid fa-landmark"></i>  Insira o nome da sua empresa:</h3>
+                        <input type="text" class="nomeEmpresa" placeholder="Nome da empresa">
+                    </div>
+                    <div class="boxLogo">
+                        <h3><i class="fa-solid fa-copyright"></i>  Insira a logo da sua empresa (.png ou .jpeg, max. 200x100):</h3>
+                        <div class="contenInputLogo">
+                            <input type="file" class="logoEmpresa" accept="image/*">
+                            <img src="" class="logoPreview"></img>
+                        </div>
+                    </div>
+                    <div class="boxCores">
+                        <h3><i class="fa-solid fa-palette"></i>  Selecione a paleta de cores:</h3>
+                        <div class="contenCores">
+                            <div class="color-options" id="colorOptions">
+                                <div class="color-option" data-value=1>
+                                    <div class="color-circle" style="background-color: #242f4d; border: solid 0.15rem #B89A5F;"></div>
+                                    <div class="color-label">Azul</div>
+                                </div>
+                                <div class="color-option" data-value=2>
+                                    <div class="color-circle" style="background-color: #492D1A; border: solid 0.15rem #FEF9EF;"></div>
+                                    <div class="color-label">Marrom</div>
+                                </div>
+                                <div class="color-option" data-value=3>
+                                    <div class="color-circle" style="background-color: #610a16ff; border: solid 0.15rem #88693bff;"></div>
+                                    <div class="color-label">Vermelho</div>
+                                </div>
+                                <div class="color-option" data-value=4>
+                                    <div class="color-circle" style="background-color: #113c25; border: solid 0.15rem #B89A5F;"></div>
+                                    <div class="color-label">Verde</div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="cores" id="selectedColor" value="azul">
+                        </div>
+                    </div>
+                    <button class="btnSalvarEdicao">Salvar</button>
+                </div>
+
+                <div class="blockSetorAreas">
+                    <div class="blockSetores">
+                        <h3 class="titleEditarSetores"><i class="fas fa-sitemap"></i>   Edição dos Setores</h3>
+                        <button class="addSetor" onclick="addSetor()">Adicionar Setor</button>
+                        <div class="tableSetores">
+                            <div class="lineTitleSetores">
+                                <p class="titleTableSetores">Setores</p>
+                            </div>
+                            <div class="containerEditarSetores">
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="blockAreas">
+                        <h3 class="titleEditarTipoDemanda"><i class="fas fa-globe"></i> Edição de tipos de demanda</h3>
+                        <button class="addDemandaType" onclick="addTipoDemanda()">Adicionar Tipo de Demanda</button>
+                        <div class="tableTipoDemanda">
+                            <div class="containerTitleDemandas">
+                                <p class="titleTableDemandas">Tipos de demanda</p>
+                            </div>
+                            <div class="containerTipoDemanda">
+                                <!-- Preenchimento dinâmico pelo js na função preencherPopupEmpresa() line 682 -->
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btnSalvarEdicao">Salvar</button>
+                </div>
+            </div>
+        </dialog>
+    </div>
+    <!-- POPUP DE SUCESSO -->
+        <!-- POPUP DE SUCESSO -->
+            <!-- POPUP DE SUCESSO -->
+        <dialog class="popupResposta">
+            <div class="contentPopupResposta">
+                <h1 class="titlePopupResposta"></h1>
+                <h2 class="msgResposta"></h2>
+                <button class="fecharPopupResposta" onclick="fecharPopupResposta()">Ok</button>
+            </div>
+        </dialog>
+            <!-- POPUP DE SUCESSO -->
+        <!-- POPUP DE SUCESSO -->
+    <!-- POPUP DE SUCESSO -->
+    
+    <!-- POPUP DE LOGS -->
+        <!-- POPUP DE LOGS -->
+            <!-- POPUP DE LOGS -->
+        <dialog class="popupLog">
+            <span class="closeLogs" onclick="fecharPopupLogs()">&times;</span>
+            <div class="containerPopupLog">
+                <h1 class="titlePopupLog">Relatório de demandas</h1>
+                
+                <div class="containerTablesLog">
+                    <div class="containerAbasLog">
+                        <div class="abas">
+                            <h2 class="subTitleLogs">Demandas</h2>
+                            <h2 class="subTitleLogs">Usuários</h2>
+                        </div>
+                        <input class="inputPesquisa" id="inputPesquisaDemandas" type="text" placeholder="Pesquise um n° ou uma demanda">
+                        <input class="inputPesquisa" id="inputPesquisaUsers" type="text" placeholder="Pesquise um nome de usuário">
+                    </div>
+                    <div class="tableLog">
+                        <div class="lineTitlePopupLogs">
+                            
+                        </div>
+                        <div class="contentTableLog">
+                            
+                        </div>
+                    </div>
+                    <button class="btnRelatorio" id="btn-relatorio">Emitir Relatório</button>
+                </div>
+            </div>
+        </dialog>
+            <!-- POPUP DE LOGS -->
+        <!-- POPUP DE LOGS -->
+    <!-- POPUP DE LOGS -->
+    <input type="text" id="hiddenGestor" hidden value="{{gestor}}">
+    <input type="text" id="hiddenId" hidden value="{{current_user.id}}">
+    <script src="/static/js/loading.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src='/static/js/perfil.js'></script>
+</body>
+</html>

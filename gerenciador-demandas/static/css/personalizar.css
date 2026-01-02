@@ -1,0 +1,891 @@
+/* Variáveis do css */
+:root {
+    --fundoGerenciador: url('/static/img/fundoGerenciador.jpg');
+    --corPrincipal: #242f4d;
+    --corSecundaria: #B89A5F;
+    --sombraSecundaria: #826c41;
+}
+body {
+    margin: auto;
+    background: var(--fundoGerenciador) no-repeat center center fixed;
+    background-size: cover; /* A imagem de fundo vai cobrir toda a tela */
+    background-size: 100%;
+    min-height: 100vh;
+    font-family: "Rubik", sans-serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Rubik", sans-serif;
+}
+.global {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 3vh;
+}
+.containerTitle {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--corSecundaria);
+    font-family: "Rubik", sans-serif;
+}
+.containerEtapas {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8vw;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+    font-family: "Rubik", sans-serif;
+}
+.etapa {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--corSecundaria);
+    background-color: var(--corPrincipal);
+    border-radius: 50%;
+    box-shadow: 0rem 0rem 0.5rem var(--corSecundaria);
+}
+.etapaAtual {
+    background-color: var(--corSecundaria);
+    color: var(--corPrincipal);
+}
+.tracin {
+    width: 3vw;
+    height: 0.4vh;
+    border-radius: 0.5rem;
+    background-color: var(--corSecundaria);
+}
+/* Animações para transição */
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+.containerBoxes {
+    width: 65%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--corPrincipal);
+    border-radius: 0.5rem;
+    padding: 1vw;
+}
+.containerBoxCores {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 3vh;
+}
+.containerBoxCores h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+}
+.containerBoxCores h3 i{
+    color: var(--corSecundaria);
+}
+.boxNomeEmpresa {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    gap: 3vh;
+    flex-direction: column;
+}
+.boxLogo {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.contenInput {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+}
+.nomeEmpresa {
+    width: 50%;
+    font-size: 1.3rem;
+    color: white;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 0.15rem solid var(--corSecundaria);
+}
+.contenInputLogo {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.containerPreviw {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    flex-direction: column; 
+}
+.logoPreview {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 0.3vw;
+}
+.logoEmpresa {
+    width: 35%;
+    padding: 8px;
+    color: var(--corPrincipal);
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.logoEmpresa:hover {
+    border-color: var(--corPrincipal);
+}
+
+.logoEmpresa::file-selector-button {
+    padding: 6px 12px;
+    border: solid 0.15rem var(--corPrincipal);
+    background-color: transparent;
+    color: var(--corPrincipal);
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logoEmpresa::file-selector-button:hover {
+    background-color: var(--corPrincipal);
+    color: var(--corSecundaria);
+}
+.boxCores {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    gap: 2vh;
+    flex-direction: column;
+}
+.contenCores {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+}
+.color-options {
+    display: flex;
+    gap: 1.5vw;
+}
+
+.color-option {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 10px;
+    transition: border 0.3s;
+}
+.color-option.selected {
+    border: 2px solid #333;
+    background-color: gray;
+}
+.color-circle {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+}
+.color-label {
+    font-size: 1rem;
+    text-align: center;
+}
+.btnCorParaSetor {
+    padding: 0.2rem;
+    padding-inline: 1rem;
+    background-color: var(--corSecundaria);
+    border: none;
+    color: var(--corPrincipal);
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-radius: 2rem;
+    /* Sombra inicial suave */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+}
+.btnCorParaSetor:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-0.125rem);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.btnCorParaSetor:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+}
+
+/* Setores */
+    /* Setores */
+        /* Setores */
+.containerBoxSetores {
+    width: 100%;
+    height: 100%;
+    padding: 1vw;
+    display: none;
+    align-items: center;
+    border-radius: 0.5rem;
+    flex-direction: column;
+    gap: 3vh;
+}
+.containerBoxSetores h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+}
+.containerBoxSetores h3 i{
+    color: var(--corSecundaria);
+}
+.boxSetores {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    gap: 2vh;
+    flex-direction: column;
+}
+.addSetor {
+    padding: 0.2rem;
+    padding-inline: 1rem;
+    background-color: var(--corSecundaria);
+    border: none;
+    color: var(--corPrincipal);
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-radius: 1rem;
+    /* Sombra inicial suave */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.addSetor:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-0.125rem);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.addSetor:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+}
+.containerTableSetores {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    overflow-y: auto;
+    gap: 1vh;
+    padding: 1rem;
+    flex-direction: column;
+    box-shadow: 0rem 0rem 0.5rem var(--corSecundaria);
+    border-radius: 0.5rem
+}
+.containerTableSetores::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.8rem;
+}
+.containerTableSetores::-webkit-scrollbar-thumb {
+    background-color: var(--corSecundaria);
+    border-radius: 0.5rem;
+    cursor: grab;
+    width: 0.5rem;
+}
+.setor {
+    width: 80%;
+    height: 10%;
+    padding-block: 0.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: transparent;
+    border: solid 0.15rem var(--corSecundaria);
+    border-radius: 1rem;
+    transition: ease-in-out 0.4s;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--corSecundaria);
+}
+.firstIconMinus {
+    color: var(--corPrincipal);
+}
+.setor i {
+    cursor: pointer;
+    transition: ease-in-out 0.4s;
+}
+.setor i:hover {
+    color: red;
+}
+.inputSetor {
+    width: 60%;
+    border: 0.1rem solid var(--corSecundaria);
+    border-radius: 0.3vw;
+    outline: none;
+    font-size: 1.3rem;
+    padding-inline: 0.3vw;
+    font-weight: 400;
+    color: var(--corSecundaria);
+    background-color: transparent;
+}
+
+.containerButons {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.containerButons button {
+    padding: 0.2rem;
+    padding-inline: 1rem;
+    background-color: var(--corSecundaria);
+    border: none;
+    color: var(--corPrincipal);
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-radius: 2rem;
+    /* Sombra inicial suave */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+}
+.containerButons button:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-0.125rem);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.containerButons button:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+}
+
+
+/* Areas */
+    /* Areas */
+        /* Areas */
+.containerBoxAreas {
+    width: 100%;
+    height: 100%;
+    padding: 1vw;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    gap: 3vh;
+}
+.containerBoxAreas h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+}
+.containerBoxAreas h3 i{
+    color: var(--corSecundaria);
+}
+.boxAreas {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    gap: 2vh;
+    padding: 1vw;
+    flex-direction: column;
+    overflow: visibles;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0rem 0rem 0.5rem var(--corSecundaria);
+}
+.boxAreas::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.8rem;
+}
+.boxAreas::-webkit-scrollbar-thumb {
+    background-color: var(--corSecundaria);
+    border-radius: 0.5rem;
+    cursor: grab;
+    width: 0.5rem;
+}
+.addArea {
+
+    padding: 0.4rem;
+    padding-inline: 1rem;
+    background-color: var(--corSecundaria);
+    border: none;
+    color: var(--corPrincipal);
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    border-radius: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    /* Sombra inicial suave */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.addArea:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-0.125rem);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.addArea:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+}
+.detailsArea {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.detailsArea summary {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: solid 0.15rem var(--corSecundaria);
+    cursor: pointer;
+    padding: 0.5vw;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--corSecundaria);
+}
+.containerAddArea {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+}
+.firstIconMinusArea {
+    color: var(--corPrincipal);
+}
+.containerNomeArea {
+    width: 85%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    color: white;
+}
+.inputArea {
+    width: 60%;
+    border: 0.1rem solid var(--corSecundaria);
+    border-radius: 0.3vw;
+    color: white;
+    outline: none;
+    font-size: 1.3rem;
+    padding-inline: 0.3vw;
+    font-weight: 400;
+    background-color: transparent;
+}
+.containerEtapasDemanda {
+    width: 57vw;
+    height: 35vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: auto;
+    box-sizing: border-box;
+    gap: 1.5vh;
+}
+.containerEtapasDemanda::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.5rem;
+}
+.containerEtapasDemanda::-webkit-scrollbar-thumb {
+    background-color: var(--corSecundaria);
+    border-radius: 0.5rem;
+    cursor: grab;
+}
+.addEtapa {
+    width: 100%;
+    height: 2rem;
+    background-color: var(--corSecundaria);
+    border: none;
+    padding-block: 1rem;
+    color: var(--corPrincipal);
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    cursor: pointer;
+    margin-block: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    /* Sombra inicial suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.addEtapa:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-2px);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.addEtapa:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.etapaDemanda {
+    width: 100%;
+    height: 25%;
+    font-size: 1.3rem;
+    color: var(--corSecundaria);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: solid 0.1rem var(--corSecundaria);
+    box-sizing: border-box;
+    padding: 0.5rem;
+}
+.etapaDemandaCriacao {
+    width: 100%;
+    height: 25%;
+    font-size: 1.3rem;
+    color: var(--corSecundaria);
+    display: flex;
+    align-items: center;
+    gap: 34%;
+    border-bottom: solid 0.1rem var(--corSecundaria);
+    box-sizing: border-box;
+    padding: 0.5rem;
+}
+
+.nomeEtapa {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    font-size: 1.2rem;
+    color: white;
+    padding: 0.2rem;
+    margin: 0;
+}
+.inputEtapa {
+    width: 85%;
+    border: 0.1rem solid var(--corSecundaria);
+    border-radius: 0.3vw;
+    color: white;
+    outline: none;
+    font-size: 1rem;
+    padding-inline: 0.3vw;
+    font-weight: 400;
+    background-color: transparent;
+}
+.setorEtapa {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    font-size: 1.2rem;
+    color: white;
+    padding: 0.2rem;
+    margin: 0;
+}
+.selectSetor {
+    width: 60%;
+    border: 0.1rem solid var(--corSecundaria);
+    border-radius: 0.3vw;
+    color: white;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 400;
+    background-color: transparent;
+    cursor: pointer;
+}
+.selectSetor option {
+    background-color: var(--corSecundaria);
+    color: var(--corPrincipal);
+} 
+.etapaValidacao {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    font-size: 1.2rem;
+    color: white;
+    padding: 0.2rem;
+    margin: 0;
+}
+.checkbox-wrapper {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+/* Esconde o checkbox original */
+.inputValidacao {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+/* Estilo do círculo */
+.custom-checkbox {
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 0.1rem solid var(--corSecundaria);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background 0.2s ease;
+    box-sizing: border-box;
+}
+/* Quando marcada, preenche o círculo */
+.checkbox-wrapper input:checked ~ .custom-checkbox {
+    background-color: var(--corSecundaria); /* cor quando marcado */
+}
+.fa-circle-plus:hover {
+    color: green;
+}
+.fa-circle-minus {
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.fa-circle-minus:hover {
+    color: red;
+}
+
+.containerBoxAdm {
+    width: 100%;
+    height: 100%;
+    padding: 1vw;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    gap: 3vh;
+}
+.containerBoxAdm h3 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+}
+.containerBoxAdm h3 i{
+    color: var(--corSecundaria);
+}
+.boxAdm {
+    width: 100%;
+    height: 75%;
+    display: flex;
+    align-items: center;
+    gap: 2vh;
+    flex-direction: column;
+}
+.lineInputs {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lineInputs div {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+.inputAdm {
+    width: 80%;
+    border: 0.1rem solid var(--corSecundaria);
+    border-radius: 0.3vw;
+    color: white;
+    outline: none;
+    font-size: 1.2rem;
+    padding-inline: 0.3vw;
+    font-weight: 200;
+    background-color: transparent;
+}
+.inputAdm:-webkit-autofill,
+.inputAdm:-webkit-autofill:hover,
+.inputAdm:-webkit-autofill:focus,
+.inputAdm:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s !important; /* Atraso para evitar a cor */
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: var(--corSecundaria) !important;
+}
+.lineSelect {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: column;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 200;
+}
+.lineSelect select {
+    width: 50%;
+    border: 0.1rem solid var(--corSecundaria);
+    border-radius: 0.3vw;
+    color: white;
+    outline: none;
+    font-size: 1.2rem;
+    padding-inline: 0.3vw;
+    font-weight: 200;
+    background-color: transparent;
+    cursor: pointer;
+}
+.containerSetores {
+    width: 40%;
+    height: 80%;
+    box-shadow: 0rem 0rem 0.5rem var(--corSecundaria);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: auto;
+    border-radius: 0.5rem;
+    gap: 1rem;
+    padding: 1rem;
+}
+.containerSetores::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.5rem;
+}
+.containerSetores::-webkit-scrollbar-thumb {
+    background-color: var(--corSecundaria);
+    border-radius: 0.5rem;
+    cursor: grab;
+}
+
+.opcaoSetor {
+    width: 90%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+.inputSetorAdm {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.nomeSetor {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: white;
+    cursor: pointer;
+}

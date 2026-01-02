@@ -1,0 +1,702 @@
+:root {
+    --fundoGerenciador: url('/static/img/fundoGerenciador.jpg');
+    --corPrincipal: #242f4d;
+    --corSecundaria: #B89A5F;
+    --sombraSecundaria: #826c41;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    margin: auto;
+    background: var(--fundoGerenciador) no-repeat center center fixed;
+    backdrop-filter: blur(7px);
+    background-size: cover; /* A imagem de fundo vai cobrir toda a tela */
+    background-size: 100%;
+    min-height: 100vh;
+    font-family: "Rubik", sans-serif;
+}
+
+.global {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dadosUser {
+    display: none;
+}
+
+.midContainer {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.boxTitle {
+    width: 95%;
+    height: 10%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.boxTitle h1 {
+    font-size: 1.7vw;
+    font-weight: 600;
+    color: white;
+    font-family: "Rubik", sans-serif;
+}
+.estatisticas {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cards {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.containerCard {
+    width: 24%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+#containerCardResponsavelGestores{
+    display: none;
+}
+.titleCard {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+    font-size: 1.3vw;
+    font-weight: 500;
+    padding-left: 2vw;
+    margin: 0;
+    font-family: "Rubik", sans-serif;
+}
+.card {
+    width: 90%;
+    height: 90%;
+    border-radius: 0.3vw;
+    padding: 0.3vw;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    justify-content: flex-start;
+    gap: 0.5vh;
+    align-items: center;
+    background-color: var(--corPrincipal);
+    border: solid 0.15rem var(--corSecundaria);
+}
+.card::-webkit-scrollbar {
+    display: none;
+}
+.identificacao {
+    width: 95%;
+    padding: 0.5vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 0.3vw;
+    transition: 0.3s ease-in-out;
+}
+.identificacao:hover {
+    background-color: var(--corSecundaria);
+    color: var(--corPrincipal);
+    cursor: pointer;
+}
+.idDemanda {
+    width: 30%;
+    font-size: 1rem;
+    font-weight: 400;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nomeDemanda {
+    width: 70%;
+    text-align: center;
+    font-size: 1vw;
+    font-weight: 400;
+    color: white;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Oculta o excesso de texto */
+    text-overflow: ellipsis; /* Adiciona "..." quando o texto ultrapassa o limite */
+}
+.boxGrafico {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.grafico {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+}
+.titleGrafico {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3vw;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    font-family: "Rubik", sans-serif;
+}
+.progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: 100%;
+    margin: 0;
+}
+svg {
+    width: 100%;
+    height: 100%;
+}
+.progress-text {
+    font-size: 5vmin;
+    font-weight: bold;
+    fill: var(--corSecundaria);
+}
+#progress-ring {
+    transition: stroke-dashoffset 1s ease-in-out;
+}
+.buttonContainer {
+    width: 95%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.inputSearch {
+    width: 17%;
+    border: none;
+    font-size: 1rem;
+    font-weight: 200;
+    border-bottom: solid 0.15rem var(--corSecundaria);
+    background-color: transparent;
+    outline: none;
+    padding: 0.4rem;
+    font-family: "Rubik", sans-serif;
+    color: var(--corSecundaria);
+    transition: ease-in-out 0.4s;
+}
+.inputSearch:focus {
+    border-bottom: solid 0.15rem var(--sombraSecundaria);
+}
+.addDemanda {
+    background-color: var(--corSecundaria);
+    border-radius: 0.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--corPrincipal);
+    font-size: 1.5vw;
+    font-weight: 700;
+    font-family: "Rubik", sans-serif;
+    border: none;
+    margin: 0;
+    padding: 0.5rem;
+    padding-inline: 0.8rem;
+    gap: 0.3rem;
+    /* Sombra inicial suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.addDemanda:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-2px);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.addDemanda:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.bottomContainer {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.tableData {
+    width: 97%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: solid 0.15rem var(--corSecundaria);
+    border-radius: 0.5vw;
+    background-color: var(--corPrincipal);
+}
+.columnDataTitle {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.columnDataTitle h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    font-size: 1vw;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    font-family: "Rubik", sans-serif;
+}
+
+.dropdown {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.dropdown-button {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1vw;
+    font-weight: 400;
+    color: white;
+    font-family: "Rubik", sans-serif;
+}
+.dropdown-button i {
+    color: var(--corSecundaria);
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: var(--corPrincipal);
+    min-width: 100%;
+    max-height: 30vh;
+    overflow-y: auto;
+    border-radius: 0.5vw;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border: 0.15rem solid var(--corSecundaria);
+}
+.dropdown-content::-webkit-scrollbar {
+    display: none;
+}
+.dropdown-content .option {
+    padding: 0.5rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1vw;
+    font-weight: 300;
+    color: white;
+    font-family: "Rubik", sans-serif;
+    transition: ease 0.2s;
+}
+.dropdown-content .option:hover {
+    background-color: var(--corSecundaria);
+    color: var(--corPrincipal);
+}
+
+
+.columnDataContainer {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: auto;
+    font-size: 1.2rem;
+    font-weight: 300;
+    font-family: "Rubik", sans-serif;
+    color: var(--corSecundaria);
+}
+.columnDataContainer::-webkit-scrollbar {
+    display: none;
+}
+.lineData {
+    width: 100%;
+    padding-block: 0.4rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+}
+.columnData {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Rubik", sans-serif;
+}
+.columnData p {
+    text-align: center;
+    font-size: 1vw;
+    font-weight: 300;
+    color: white;
+    overflow: hidden; /* Oculta o excesso de texto */
+    text-overflow: ellipsis; /* Adiciona "..." quando o texto ultrapassa o limite */
+}
+.columnData i {
+    font-size: 1.2rem;
+    cursor: pointer;
+    /* Sombra inicial suave */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.fa-trash:hover {
+    color: red;
+    /* Move o botão 2px para cima */
+    transform: translateY(-2px);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.fa-eye:hover {
+    color: var(--corSecundaria);
+    /* Move o botão 2px para cima */
+    transform: translateY(-2px);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.columnData i:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+/* POPUP DE DE ADICIONAR DEMANDAS*/
+.containerPopupAddDemanda {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1005;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.contentPopupAddDemanda {
+    width: 65%;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contentPopupAddDemanda h2 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: var(--corPrincipal);
+}
+
+.closeAddDemanda {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #444;
+    margin: 0;
+    padding: 0;
+}
+.closeAddDemanda:hover {
+    color: red;
+}
+
+.containerInputsDemandas {
+    width: 100%;
+    height: 85%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.checkboxDados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.checkboxDados label {
+    font-weight: bold;
+    color: var(--corPrincipal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+}
+#usarDadosUsuario {
+    cursor: pointer;
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.input-group-Area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.input-group-Area label {
+    width: 100%;
+    font-weight: 400;
+    margin-bottom: 5px;
+    color: var(--corPrincipal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.input-group-Area select {
+    width: 40%;
+    border: solid 0.1remvar(--corPrincipal);
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    border-radius: 0.3rem;
+    color: var(--corPrincipal);
+    gap: 5px;
+    cursor: pointer;
+}
+
+
+.input-group label {
+    width: 100%;
+    font-weight: 400;
+    margin-bottom: 5px;
+    color: var(--corPrincipal);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding-block: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.input-group textarea {
+    width: 100%;
+    padding-block: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.input-group textarea {
+    resize: none;
+}
+.inputArquivosDemanda {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.inputArquivosDemanda:hover {
+    border-color: var(--corPrincipal);
+}
+
+.inputArquivosDemanda::file-selector-button {
+    padding: 6px 12px;
+    background-color: var(--corPrincipal);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: solid 0.15rem transparent;
+    transition: background-color 0.3s;
+}
+
+.inputArquivosDemanda::file-selector-button:hover {
+    background-color: transparent;
+    color: var(--corPrincipal);
+    border: solid 0.15rem var(--corPrincipal);
+}
+.listaArquivosSelecionados {
+    max-height: 10vh;
+    overflow-y: auto;
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.listaArquivosSelecionados li {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+.btnRemoverArquivo {
+    margin-left: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 2px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btnRemoverArquivo:hover {
+    background-color: #c82333;
+}
+
+.full-width {
+    grid-column: span 3;
+}
+
+.btnCriarDemanda {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--corPrincipal);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: "Rubik", sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.3s ease-in-out;
+}
+.btnCriarDemanda:hover {
+    background-color: var(--corSecundaria);
+    color: var(--corPrincipal);
+}
+
+/* Animação de abertura e fechamento */
+.containerPopupAddDemanda.ativo {
+    display: flex;
+    opacity: 1;
+}
+
+.containerPopupAddDemanda.ativo .contentPopupAddDemanda {
+    transform: scale(1);
+    opacity: 1;
+}
+/* Ocultar campos inicialmente */
+.oculto {
+    display: none;
+}
+
+.progress-container {
+    position: relative; /* Essencial para posicionar a legenda no centro */
+}
+
+.donut-chart {
+    width: 60%;
+    height: 100%;
+    transform: rotate(-90deg); /* Começa o desenho do topo */
+}
+
+.donut-segment {
+    transition: stroke-dasharray 0.5s ease-in-out;
+    transform-origin: 50% 50%; /* Garante que a rotação seja a partir do centro */
+}
+
+.chart-legend {
+    position: absolute; /* Posiciona a legenda sobre o SVG */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: white;
+    pointer-events: none; /* Impede que a legenda bloqueie interações com o gráfico, se houver */
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend-color-box {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border-radius: 3px;
+}
+
+.legend-label {
+    font-size: 0.9vw;
+    font-weight: 300;
+    white-space: nowrap;
+}

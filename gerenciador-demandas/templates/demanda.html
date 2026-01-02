@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Demandas</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/loading.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/demanda.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="/static/img/DL.png" />
+</head>
+
+<body>
+    <input type="text" id="currentUserId" value="{{ current_user.id }}" hidden>
+    <input type="text" id="currentUserName" value="{{ current_user.nome }}" hidden>
+    <input type="text" id="currentUserAdm" value="{{ current_user.permissao_adm }}" hidden>
+    <!-- loading -->
+    <!-- loading -->
+    <!-- loading -->
+    <div class="loading-container">
+        <div class="containerLogo">
+            <img src="" alt="Logo" class="logoLoading">
+        </div>
+        <h3>Carregando...</h3>
+    </div>
+    <!-- loading -->
+    <!-- loading -->
+    <!-- loading -->
+
+    <div class="global">
+        <input type="text" id="idDemanda" hidden value="{{ id }}">
+        <div class="topBar">
+            <div class="logo">
+                <a href="/app/home"><img class="logoTopBar" src=""></a>
+            </div>
+            <div class="icons">
+                <!-- icon notificações -->
+                <input type="text" id="dadosNotificacoes" value='{{notificacoes|tojson|safe}}' hidden>
+                <i class="fa-solid fa-bell" id="notificationIcon">
+                    <span id="notificationBadge" class="hidden"> ! </span>
+                </i>
+                <!-- icon home -->
+                <a href="/app/home"><i class="fa-solid fa-house"></i></a>
+                <!-- icon de perfil -->
+                <a href="/app/perfil" onclick="mostrarLoading()"><i class="fa-solid fa-user" id="userIcon"></i></a>
+                <!-- icone de sair -->
+                <a id="logoutButton" title="Sair"><i class="fa-solid fa-door-open" onclick="mostrarLoading()"></i></a>
+            </div>
+            <div id="notificationPanel">
+                <div id="notificationList">
+                    <!-- Preencher dinamicamente para alterações de ícones -->
+                </div>
+            </div>
+        </div>
+        <div class="containerDemandaGlobal">
+            <div class="contentDemandaGlobal">
+                <div class="cabecalhoDemanda">
+                    <div class="dadosDemanda">
+                        <div class="nomeNumDemanda">
+                            <h3 class="textDemanda" id="nomeDemanda"></h3>
+                            <h3 class="textDemanda">N° Demanda: <p id="numDemanda"></p>
+                            </h3>
+                        </div>
+                        <div class="contatosDemanda">
+                            <div class="contatoDemanda">
+                                <i class="fa-solid fa-address-card iconAtributo"></i>
+                                <input type="text" disabled id="registroContato" title="">
+                                <i class="fa-solid fa-pen-to-square edit-btn"></i>
+                            </div>
+
+                            <div class="contatoDemanda">
+                                <i class="fa-solid fa-envelope iconAtributo"></i>
+                                <input type="text" disabled id="emailContato" title="">
+                                <i class="fa-solid fa-pen-to-square edit-btn"></i>
+                            </div>
+
+                            <div class="contatoDemanda">
+                                <i class="fa-solid fa-phone iconAtributo"></i>
+                                <input type="text" disabled id="telefoneContato">
+                                <i class="fa-solid fa-pen-to-square edit-btn"></i>
+                            </div>
+
+                            <div class="contatoDemanda">
+                                <i class="fa-brands fa-whatsapp iconAtributo"></i>
+                                <input type="text" disabled id="whatsAppContato">
+                                <i class="fa-solid fa-pen-to-square edit-btn"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="containerdescriptionDemanda">
+                        <div class="contentDescription">
+                            <div class="titleDescricao">
+                                <i class="fas fa-info-circle" title="Descrição da demanda"></i>
+                                <h4>Descrição:</h4>
+                                <i class="fa-solid fa-pen-to-square edit-desc"></i>
+                            </div>
+                            <textarea class="descricao" id="descricao" disabled></textarea>
+                        </div>
+                        <div class="contentDocumentos">
+                            <div class="titleDocumentos">
+                                <i class="fa-solid fa-file" title="Documentos"></i>
+                                <h4>Documentos:</h4>
+                            </div>
+                            <div class="containerListaDocumentos">
+                                <!-- Preenchimento pelo js -->
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="dataDemanda">
+                        <div class="containerDataCriacao">
+                            <div class="containerDadosDemanda">
+                                <h4 class="titleDataCriacao"><i class="fa-solid fa-user" id="criadorIcon"></i> Criador:
+                                </h4>
+                                <p class="dataCriacao" id="criador"></p>
+                            </div>
+                            <div class="containerDadosDemanda">
+                                <h4 class="titleDataCriacao"><i class="fas fa-user-tie"></i> Representante:</h4>
+                                <p class="dataCriacao" id="dataAtualizacao"></p>
+                            </div>
+                            <div class="containerDadosDemanda">
+                                <h4 class="titleDataCriacao"><i class="fas fa-layer-group"></i> Tipo de demanda:</h4>
+                                <p class="dataCriacao" id="tipoDemanda"></p>
+                            </div>
+                            <div class="containerDadosDemanda">
+                                <h4 class="titleDataCriacao"><i class="fa-solid fa-calendar-days"></i> Criado em:</h4>
+                                <p class="dataCriacao" id="dataCriacao"></p>
+                            </div>
+                            <div class="containerEtapaAtual">
+                                <h4 class="titleEtapa">
+                                    <i class="fas fa-map-marker-alt etapa-atual"title="Etapa Atual"></i> 
+                                    Etapa Atual:
+                                </h4>
+                                <a href="" class="etapaAtual"></a>
+                            </div>
+                            <div class="containerDadosDemanda">
+                                <h4 class="titleDataCriacao"><i class="fa-solid fa-hourglass-half"></i> Prazo da etapa:</h4>
+                                <p class="dataCriacao" id="dataPrazo">07/09/2025 09:11</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="containerDetails">
+                    <!-- Preenchido dinamicamente -->
+                </div>
+            </div>
+        </div>
+
+        <!-- POPUP DE EDIÇÃO DE ETAPA -->
+        <!-- POPUP DE EDIÇÃO DE ETAPA -->
+        <!-- POPUP DE EDIÇÃO DE ETAPA -->
+        <dialog class="popupEditarEtapa">
+            <div class="contentEditarEtapa">
+                <!-- <span class="closeEditarEtapa" onclick="fecharEditarEtapa()">&times;</span>
+                <h1 class="titleEditarEtapa"></h1>
+                <textarea class="msgEditarEtapa" placeholder="Mensagem..."></textarea>
+                <button class="btnEnviarEtapa">Enviar</button> -->
+            </div>
+        </dialog>
+        <!-- POPUP DE SUCESSO -->
+        <!-- POPUP DE SUCESSO -->
+        <!-- POPUP DE SUCESSO -->
+
+        <!-- POPUP DE SUCESSO -->
+        <!-- POPUP DE SUCESSO -->
+        <!-- POPUP DE SUCESSO -->
+        <dialog class="popupResposta">
+            <div class="contentPopupResposta">
+                <h1 class="titlePopupResposta"></h1>
+                <h2 class="msgResposta"></h2>
+                <button class="fecharPopupResposta" onclick="fecharPopupResposta()">Ok</button>
+            </div>
+        </dialog>
+        <!-- POPUP DE SUCESSO -->
+        <!-- POPUP DE SUCESSO -->
+        <!-- POPUP DE SUCESSO -->
+        <script src='/static/js/loading.js'></script>
+        <script src='/static/js/demanda.js'></script>
+        <input type="text" id="hiddenId" hidden value="{{current_user.id}}">
+</body>
+
+</html>

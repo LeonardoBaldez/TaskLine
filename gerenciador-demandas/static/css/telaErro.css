@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+    margin: auto;
+    background: url('/static/img/fundoGerenciador.jpg') no-repeat center center fixed;
+    backdrop-filter: blur(7px);
+    background-size: cover; /* A imagem de fundo vai cobrir toda a tela */
+    background-size: 100%;
+    min-height: 100vh;
+    font-family: "Rubik", sans-serif;
+}
+.global {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+.global i {
+    font-size: 4rem;
+    color: yellow;
+}
+.containerErro {
+    width: 80%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+h1 {
+    width: 60%;
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+}
+.btnLogin {
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    background-color: #B89A5F;
+    padding: 0.3rem;
+    padding-inline: 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    /* Sombra inicial suave */
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: all 0.3s ease-in-out;
+}
+.btnLogin:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-0.3rem);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 0.2rem 0.4rem  rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.btnLogin:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 0.2rem 0.4rem  rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <!-- Importação do FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/login.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/loading.css'>
+    <link rel="icon" href="/static/img/DL.png" />
+</head>
+<body>
+    <!-- loading -->
+        <!-- loading -->
+            <!-- loading -->
+            <div class="loading-container">
+                <div class="containerLogo">
+                    <img src="/static/img/DL.png" alt="Logo" class="logoLoading">
+                </div>
+                <h3>Carregando...</h3>
+            </div>
+                    <!-- loading -->
+                <!-- loading -->
+            <!-- loading -->
+
+    <div class="global">
+        <!-- Login -->
+            <!-- Login -->
+                <!-- Login -->
+        <div class="boxLogin">
+            <div class="boxTitle">
+                <h1 class="titleLogin">Login</h1>
+            </div>
+                <form class="boxInputs"  method="post" action="/user/login">
+                    <input type="text" class="inputLogin" name="username" id="inputEmail" placeholder="Email">
+                    <div class="password-container">
+                        <input type="password" class="inputSenha" name="password" id="inputSenha" placeholder="Senha">
+                        <i class="fa-solid fa-eye toggle-password" id="togglePasswordLogin"></i>
+                    </div>
+                {% if error_message %}
+                    <p class="errorMessage">
+                        {{ error_message }}
+                    </p>
+                {% endif %}
+                    <a id="recuperarSenha">Esqueci minha senha</a>
+                    <a id="primeiroAcesso">Primeiro Acesso</a>
+                    <button class="btnLogin" type="submit">Entrar</button>
+                </form>
+        </div>
+                <!-- Login -->
+            <!-- Login -->
+        <!-- Login -->
+
+        <!-- Primeiro Acesso -->
+            <!-- Primeiro Acesso -->
+                <!-- Primeiro Acesso -->
+        <div class="boxPrimeiroAcesso">
+            <div class="boxVoltarLogin">
+                <div id="voltarLoginPa" class="btnVoltar" onclick="voltarLoginPa()"> <i class="fa-solid fa-arrow-left"></i> Voltar</div>
+            </div>
+            <div class="boxInputsPrimeiroAcesso">
+                <div class="boxInserirEmail">
+                    <h3 class="titlePrimeiroAcesso">Insira seu email de cadastro para gerar sua senha de acesso:</h3>
+                    <input type="text" class="inputPrimeiroAcesso" id="emailPrimeiroAcesso" placeholder="Email">
+                </div>
+                <div class="boxGerarSenha">
+                    <h3 class="titlePrimeiroAcesso">Digite sua nova senha:</h3>
+                    <div class="password-container">
+                        <input type="password" class="inputSenha" name="password" id="senhaPrimeiroAcesso" placeholder="Senha">
+                        <i class="fa-solid fa-eye toggle-password" id="toggleSenhaPrimeiroAcesso"></i>
+                    </div>
+                    <div class="boxSenhaAcesso">
+                        <button class="btnEntrar" onclick="criarSenha()">Login</button>
+                    </div>
+                </div>
+                <div class="boxErroMessage">
+                    <h3 id="messageErro"></h3>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                </div>
+                <button class="btnCriarSenha" onclick="verificarEmail()">Criar Senha</button>
+            </div>
+        </div>
+                <!-- Primeiro Acesso -->
+            <!-- Primeiro Acesso -->
+        <!-- Primeiro Acesso -->
+
+        <!-- Recuperar Senha -->
+    <div class="boxRecuperarSenha">
+        <div class="boxEmailVerificacao">
+            <div class="boxVoltarLogin">
+                <div id="voltarLoginEs" class="btnVoltar"> <i class="fa-solid fa-arrow-left"></i> Voltar</div>
+            </div>
+            <h3 class="titleRecuperarSenha">Insira um email para redefinição da sua senha:</h3>
+            <input type="text" class="inputLogin" id="emailRedefinirSenha" placeholder="Email">
+            <button class="btnEnviarCod">Enviar Código</button>
+        
+            <div id="boxCodigoVerificacao" style="display: none; flex-direction: column; align-items: center; width: 100%;">
+                <h3 class="titleRecuperarSenha">Insira o código de verificação:</h3>
+                <div class="code-container">
+                    <input type="text" class="code-input" maxlength="1">
+                    <input type="text" class="code-input" maxlength="1">
+                    <input type="text" class="code-input" maxlength="1">
+                    <input type="text" class="code-input" maxlength="1">
+                    <input type="text" class="code-input" maxlength="1">
+                    <input type="text" class="code-input" maxlength="1">
+                </div>
+
+                <p id="mensagemRecuperacao" class="errorMessage" style="display: none;"></p>
+
+                <button class="btnVerificarCod">Verificar</button>
+            </div>
+        </div>
+        <div class="boxRedefinirSenha">
+            <div class="boxInputRedefinir">
+                <div class="boxVoltarLogin">
+                    <div id="voltarSenhaPcodigo" class="btnVoltar"> <i class="fa-solid fa-arrow-left"></i> Voltar</div>
+                </div>
+                <h3>Digite sua nova senha:</h3>
+                <div class="password-container">
+                    <input type="password" class="inputSenha" id="novaSenha" placeholder="Nova Senha">
+                    <i class="fa-solid fa-eye toggle-password"></i>
+                </div>
+                <button class="btnRedefinirSenha">Redefinir</button>
+            </div>
+        </div>
+    </div>
+        <div class="boxLogo">
+            <img src="/static/img/logo.png">
+        </div>
+    </div>
+    <script src="/static/js/loading.js"></script>
+    <script src='/static/js/login.js'></script>
+    <script>
+        const userId = current_user.id ;
+    </script>
+</body>
+</html>

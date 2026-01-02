@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Home</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/home.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/loading.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="/static/img/DL.png" />
+</head>
+<body>
+    <!-- loading -->
+        <!-- loading -->
+            <!-- loading -->
+    <div class="loading-container">
+        <div class="containerLogo">
+            <img src="" alt="Logo" class="logoLoading">
+        </div>
+        <h3>Carregando...</h3>
+    </div>
+            <!-- loading -->
+        <!-- loading -->
+    <!-- loading -->
+    
+    <div class="global">
+        <div class="topBar">
+            <div class="logo">
+                <a href="/app/home"><img class="logoTopBar" src=""></a>
+            </div>
+            <div class="icons">
+            <!-- icon notificações -->
+                <input type="text" id="dadosNotificacoes" value='{{notificacoes|tojson|safe}}' hidden>
+                <i class="fa-solid fa-bell" id="notificationIcon"> 
+                    <span id="notificationBadge" class="hidden"> ! </span>
+                </i>
+            <!-- icon home -->
+                <a href="/app/home"><i class="fa-solid fa-house"></i></a>
+            <!-- icon de perfil -->
+                <a href="/app/perfil" onclick="mostrarLoading()"><i class="fa-solid fa-user" id="userIcon"></i></a>
+            <!-- icone de sair -->
+                <a id="logoutButton" title="Sair"><i class="fa-solid fa-door-open" onclick="mostrarLoading()"></i></a>
+            </div>
+
+            <div id="notificationPanel">
+                <div id="notificationList">
+                    <!-- Preencher dinamicamente para alterações de ícones -->
+                </div>
+            </div>
+        </div>
+
+        <div class="midContainer">
+            <div class="boxTitle">
+                <h1>Suas demandas</h1>
+            </div>
+            <div class="estatisticas">
+                <div class="cards">
+                    <div class="containerCard">
+                        <h2 class="titleCard">Ativas</h2>
+                        <div class="card" id="cardDemandasAtivas">
+                            <!-- Preenchimento das demandas ativas -->
+                        </div>
+                    </div>
+                    <div class="containerCard">
+                        <h2 class="titleCard">Em espera</h2>
+                        <div class="card" id="cardDemandasEspera">
+                            <!-- Preenchimento das demandas em espera -->
+                        </div>
+                    </div>
+                    <div class="containerCard">
+                        <h2 class="titleCard">Finalizadas</h2>
+                        <div class="card" id="cardDemandasFinalizadas">
+                            <!-- Preenchimento das demandas Finalizadas -->
+                        </div>
+                    </div>
+                    <div class="containerCard" id="containerCardResponsavelGestores">
+                        <h2 class="titleCard">Sem Responsável</h2>
+                        <div class="card" id="cardDemandasResponsavel">
+                            <!-- Preenchimento das demandas Finalizadas -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Espaço reservado para inserção de um gráfico -->
+                <div class="boxGrafico">
+                    <div class="grafico">
+                        <div class="titleGrafico">
+                            <h3>Relatório das demandas: </h3>
+                        </div>
+                    <div class="progress-container">
+                        <svg viewBox="0 0 100 100" class="donut-chart"></svg>
+                    <div id="chart-legend" class="chart-legend">
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="buttonContainer">
+            <input type="text" class="inputSearch" placeholder="Pesquise um numero ou cliente" oninput="filtrarPesquisa()">
+            <button class="addDemanda" onclick="abrirPopupAddDemanda()">Nova Demanda <i class="fa-solid fa-plus"></i></button>
+        </div>
+
+<!-- POPUP ADD DEMANDAS -->
+    <!-- POPUP ADD DEMANDAS -->
+        <!-- POPUP ADD DEMANDAS -->
+        <div class="containerPopupAddDemanda">
+            <div class="dadosUser">
+                <input type="text" id="dataNome" value="{{current_user.nome}}">
+                <input type="text" id="dataRepresentante" value="{{current_user.representante}}">
+                <input type="text" id="dataEmail" value="{{current_user.email}}">
+                <input type="text" id="dataTelefone" value="{{current_user.telefone}}">
+                <input type="text" id="dataWhatsapp" value="{{current_user.whatsapp}}">
+                <input type="text" id="datacnpj" value="{{current_user.registro}}">
+            </div>
+            <div class="contentPopupAddDemanda">
+                <span class="closeAddDemanda" onclick="fecharPopupAddDemanda()">&times;</span>
+                <h2>Nova Demanda</h2>
+
+                <!-- Campo de Área -->
+                <div class="input-group-Area" id="inputArea">
+                    <label><i class="fas fa-layer-group"></i> Tipo de demanda</label>
+                    <select class="inputArea" onchange="mostrarCampos()">
+                        <!-- Preenchido dinamicamente pelo js -->
+                    </select>
+                </div>
+            
+                <!-- Campos que aparecerão após a seleção da área -->
+                <div class="containerInputsDemandas oculto" id="outrosCampos">
+                    <div class="full-width checkboxDados">
+                        <label><i class="fas fa-user-check"></i> Preencher com meus dados:</label>
+                        <input type="checkbox" id="usarDadosUsuario">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label><i class="fas fa-user"></i> Nome</label>
+                        <input type="text" class="inputNome" placeholder="Digite o nome">
+                    </div>
+                
+                    <div class="input-group">
+                        <label><i class="fas fa-user-tie"></i> Representante</label>
+                        <input type="text" class="inputRepresentante" placeholder="Nome do representante">
+                    </div>
+                
+                    <div class="input-group">
+                        <label><i class="fas fa-envelope"></i> E-mail</label>
+                        <input type="email" class="inputEmail" placeholder="Digite o e-mail">
+                    </div>
+                
+                    <div class="input-group">
+                        <label><i class="fas fa-phone"></i> Telefone</label>
+                        <input type="tel" class="inputTelefone" placeholder="Digite o telefone">
+                    </div>
+                
+                    <div class="input-group">
+                        <label><i class="fab fa-whatsapp"></i> WhatsApp</label>
+                        <input type="tel" class="inputTelefone inputWhatsapp" placeholder="Digite o WhatsApp">
+                    </div>
+                
+                    <div class="input-group">
+                        <label><i class="fas fa-building"></i> CNPJ/CPF</label>
+                        <input type="text" class="inputCNPJ" placeholder="Digite o CNPJ/CPF">
+                    </div>
+                
+                    <div class="input-group full-width">
+                        <label><i class="fas fa-paperclip"></i> Anexar Arquivos</label>
+                        <input type="file" multiple class="inputArquivosDemanda" id="inputArquivosDemanda">
+                        <ul id="listaArquivosSelecionados" class="listaArquivosSelecionados"></ul>
+                    </div>
+                
+                    <div class="input-group full-width">
+                        <label><i class="fas fa-align-left"></i> Descrição</label>
+                        <textarea rows="3" class="inputDescricao" placeholder="Descreva a demanda"></textarea>
+                    </div>
+                </div>
+                <!--  -->
+                <button class="btnCriarDemanda oculto" id="btnCriar" onclick="CriarDemanda()">Criar Demanda</button>
+            </div>
+        </div>
+        <!-- POPUP ADD DEMANDAS -->
+    <!-- POPUP ADD DEMANDAS -->
+<!-- POPUP ADD DEMANDAS -->
+
+
+<!-- TABELA DE DEMANDAS -->
+    <!-- TABELA DE DEMANDAS -->
+        <!-- TABELA DE DEMANDAS -->
+        <div class="bottomContainer">
+            <div class="tableData">
+                <div class="columnDataTitle">
+                    <h3>N° Demanda</h3>
+                    <h3>Cliente</h3>
+                    <h3>
+                        <div class="dropdown">
+                            <button class="dropdown-button" onclick="toggleDropdown('dropdownArea')" title="Filtrar">
+                                Área <i class="fa-solid fa-filter"></i>
+                            </button>
+                            <div id="dropdownArea" class="dropdown-content">
+                                
+                            </div>
+                        </div>
+                    </h3>
+                    <h3>Etapa atual</h3>
+                    <h3>Prazo da etapa</h3>
+                    <h3>Responsável atual</h3>
+                    <h3>
+                        <div class="dropdown">
+                            <button class="dropdown-button" onclick="toggleDropdown('dropdownData')" title="Filtrar">
+                                Data de Criação <i class="fa-solid fa-filter"></i>
+                            </button>
+                            <div id="dropdownData" class="dropdown-content">
+                                <div class="option" onclick="selectOption('Nenhum', 'dropdownData')">
+                                    Nenhum
+                                </div>
+                                <div class="option" onclick="selectOption('Recente', 'dropdownData')">
+                                    Data mais recente para mais distante
+                                </div>
+                                <div class="option" onclick="selectOption('Distante', 'dropdownData')">
+                                    Data mais distante para mais recente
+                                </div>
+                            </div>
+                        </div>
+                    </h3>
+                    <h3>
+                        <div class="dropdown">
+                            <button class="dropdown-button" onclick="toggleDropdown('dropdownEtapa')" title="Filtrar">
+                                Status <i class="fa-solid fa-filter"></i>
+                            </button>
+                            <div id="dropdownEtapa" class="dropdown-content">
+                                <div class="option" onclick="selectOption('Nenhum', 'dropdownEtapa')">
+                                    Nenhum
+                                </div>
+                                <div class="option" onclick="selectOption('Ativo', 'dropdownEtapa')">
+                                    Ativas
+                                </div>
+                                <div class="option" onclick="selectOption('Em espera', 'dropdownEtapa')">
+                                    Em espera
+                                </div>
+                                <div class="option" onclick="selectOption('Finalizada', 'dropdownEtapa')">
+                                    Finalizadas
+                                </div>
+                            </div>
+                        </div>
+                    </h3>
+                    <h3>Visualizar</h3>
+                    <h3>Excluir</h3>
+                </div>
+                
+                <div class="columnDataContainer">
+                    <!-- Preenchimento dos dados dinamicamente -->
+                </div>
+            </div>
+        </div>
+        <!-- TABELA DE DEMANDAS -->
+    <!-- TABELA DE DEMANDAS -->
+<!-- TABELA DE DEMANDAS -->
+
+    </div>
+
+    <!-- POPUP DE SUCESSO -->
+        <!-- POPUP DE SUCESSO -->
+            <!-- POPUP DE SUCESSO -->
+        <dialog class="popupResposta">
+            <div class="contentPopupResposta">
+                <h1 class="titlePopupResposta"></h1>
+                <h2 class="msgResposta"></h2>
+                <button class="fecharPopupResposta" onclick="fecharPopupResposta()">Ok</button>
+            </div>
+        </dialog>
+            <!-- POPUP DE SUCESSO -->
+        <!-- POPUP DE SUCESSO -->
+    <!-- POPUP DE SUCESSO -->
+    
+    <!-- POPUP DE CONFIRMAÇÃO -->
+        <!-- POPUP DE CONFIRMAÇÃO -->
+            <!-- POPUP DE CONFIRMAÇÃO -->
+    <dialog class="popupConfirmacao">
+        <div class="contentPopupConfirmacao">
+            <h1 class="titlePopupConfirmacao"></h1>
+            <h2 class="msgPopupConfirmacao"></h2>
+            <div class="containerBtnConfirmacao">
+                <button class="btnConfirmacao">Ok</button>
+                <button class="btnCancelConfirmacao">Cancelar</button>
+            </div>
+        </div>
+    </dialog>
+            <!-- POPUP DE CONFIRMAÇÃO -->
+        <!-- POPUP DE CONFIRMAÇÃO -->
+    <!-- POPUP DE CONFIRMAÇÃO -->
+    <input type="text" id="hiddenId" hidden value="{{current_user.id}}">
+    <input type="text" id="userAdm" hidden value="{{current_user.permissao_adm}}">
+    <script src="/static/js/loading.js"></script>
+    <script src='/static/js/home.js'></script>
+</body>
+</html>

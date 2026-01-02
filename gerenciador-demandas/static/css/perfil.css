@@ -1,0 +1,2242 @@
+:root {
+    --fundoGerenciador: var(--fundoGerenciador);
+    --corPrincipal: var(--corPrincipal);
+    --corSecundaria: var(--corSecundaria);
+    --sombraSecundaria: var(--sombraSecundaria);
+}
+/* Animações para transição */
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--fundoGerenciador) no-repeat center center fixed;
+    backdrop-filter: blur(7px);
+    background-size: cover; /* A imagem de fundo vai cobrir toda a tela */
+    background-size: 100%;
+    min-height: 100vh;
+    font-family: "Rubik", sans-serif;
+}
+
+.global {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerBlocks {
+    /* margin-top: 3vh; */
+    width: 75%;
+    height: 90%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.blockLeft {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.blockPic {
+    width: 95%;
+    height: 40%;
+    background-color: var(--corPrincipal);
+    box-shadow: 0px 0px 10px var(--corPrincipal);
+    border: solid 0.15rem var(--corSecundaria);
+    border-radius: 0.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.pic {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    color: var(--corSecundaria);
+    border: solid 0.2rem var(--corSecundaria);
+}
+.textPic {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.textPic h3 {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--corSecundaria);
+}
+
+
+
+.blockSocialMedia {
+    width: 95%;
+    height: 50%;
+    background-color: var(--corPrincipal);
+    border-radius: 0.5vw;
+    padding: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 0px 0px 10px var(--corPrincipal);
+    border: solid 0.15rem var(--corSecundaria);
+}
+.blockSocialMedia :last-child {
+    border : none !important;
+}
+.redes {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: var(--corSecundaria) solid 0.1vw;
+}
+
+.redes p {
+    width: 65%;
+    height: 100%;
+    display: block;
+    text-align: center;
+    align-content: center;
+    color: var(--corSecundaria);
+    font-size: 1.2vw;
+    font-weight: 300;
+    font-family: "Rubik", sans-serif;
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+    overflow: hidden; /* Oculta o excesso de texto */
+    text-overflow: ellipsis; /* Adiciona "..." quando o texto ultrapassa o limite */
+    cursor: pointer;
+}
+.iconName {
+width: 35%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.iconName i {
+    width: 30%;
+    height: 100%;
+    font-size: 1.5vw;
+    color: var(--corSecundaria);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.iconName p {
+    width: 70%;
+    height: 100%;
+    font-size: 1.2vw;
+    font-weight: 400;
+    font-family: "Rubik", sans-serif;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.blockRight {
+    width: 65%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.blockInfos {
+    width: 97%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: var(--corPrincipal);
+    border-radius: 0.5vw;
+    padding-inline: 0.5rem;
+    box-sizing: border-box;
+    border: solid 0.15rem var(--corSecundaria);
+    box-shadow: 0px 0px 10px var(--corPrincipal);
+}
+.infos {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border-bottom: solid 0.1rem var(--corSecundaria);
+}
+
+.infos input:focus {
+    outline: none; /* Remove o contorno padrão */
+    border: none; /* Remove a borda */
+}
+.infos input {
+    outline: none; /* Remove o contorno padrão */
+    border: none; /* Remove a borda */
+}
+.infoNome {
+    width: fit-content;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 400;
+    font-family: "Rubik", sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.inputInfoNome {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vw;
+    color: var(--corSecundaria);
+    font-weight: 300;
+    border: none;
+    background-color: transparent;
+    font-family: "Rubik", sans-serif;
+}
+.infoSetor {
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 400;
+    font-family: "Rubik", sans-serif;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.inputInfoSetor {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--corSecundaria);
+    font-weight: 400;
+    border: none;
+    background-color: transparent;
+    font-family: "Rubik", sans-serif;
+}
+
+.infoRepresentante {
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 400;
+    font-family: "Rubik", sans-serif;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.inputInfoRepresentante  {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--corSecundaria);
+    font-weight: 400;
+    border: none;
+    background-color: transparent;
+    font-family: "Rubik", sans-serif;
+}
+
+.infoCpfCnpj {
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 400;
+    font-family: "Rubik", sans-serif;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.inputInfoCpfCnpj {
+    width: 85%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--corSecundaria);
+    font-weight: 300;
+    border: none;
+    background-color: transparent;
+    font-family: "Rubik", sans-serif;
+}
+
+.buttons {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btnEdit {
+    width: 12%;
+    height: 90%;
+    background-color: var(--corSecundaria);
+    border-radius: 0.3vw;
+    cursor: pointer;
+    border: none;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 400;
+    font-family: "Rubik", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: ease-in-out 0.4s;
+}
+.btnEdit:hover {
+    box-shadow: 0px 0px 10px var(--corSecundaria);
+}
+.btnCadastrar {
+    padding-inline: 0.8vw;
+    background-color: var(--corSecundaria);
+    border-radius: 3vw;
+    cursor: pointer;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--corPrincipal);
+    font-weight: 600;
+    font-family: "Rubik", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Sombra inicial suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.btnCadastrar:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-2px);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.btnCadastrar:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.blockLog {
+    width: 97%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.containerLog {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5vw;
+    background-color: var(--corPrincipal);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px var(--corPrincipal);
+    border: solid 0.15rem var(--corSecundaria);
+    overflow-y: auto;
+    gap: 1rem;
+}
+.containerLog::-webkit-scrollbar {
+    display: none;
+}
+.contentMsgLog {
+    width: 95%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    border-bottom: solid 0.15rem var(--corSecundaria);
+    padding: 0.5rem;
+    padding-inline: 1rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+    gap: 0.1rem;
+    transition: 0.2s ease-in-out;
+}
+.contentMsgLog:last-child {
+    border: none;
+}
+.contentMsgLog:hover {
+    background-color: #585858cb;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+}
+.action {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    font-weight: 400;
+}
+.details {
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+    color: white;
+    text-align: center;
+    font-weight: 350;
+}
+.containerUserLog {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem;
+    gap: 0.5rem;
+}
+.titleUserLog {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: var(--corSecundaria);
+    text-align: center;
+    font-weight: 500;
+}
+.nameUserLog {
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+    color: white;
+    text-align: center;
+    font-weight: 350;
+}
+.dateLog {
+    margin: 0;
+    padding: 0;
+    font-size: 0.7rem;
+    color: white;
+    text-align: center;
+    font-weight: 350;
+}
+
+.containerPopupCadastro {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.376);
+    z-index: 1099;
+}
+.popupCadastro {
+    width: 50%;
+    height: 90%;
+    background-color: white;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 0 0 0.5rem var(--corSecundaria);
+    transform: scale(0.8);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1000;
+}
+.closeCadastro {
+    position: absolute;
+    top: -0.5%;
+    right: 1%;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: ease-in-out 0.3s;
+    color: var(--corPrincipal);
+}
+.closeCadastro:hover {
+    color: red;
+}
+.blockInputs {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+.lineInputs {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.lineSolo {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.blockInputSolo {
+    width: 100%;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.blockInputSolo h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.3rem;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+}
+.containerSetores {
+    width: 75%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1vh;
+    padding: 1vw;
+    background-color: var(--corPrincipal);
+    border: solid 0.2rem var(--corSecundaria);
+    border-radius: 0.5rem;
+    overflow-y: auto;
+    box-shadow: 0 0 0.5rem var(--corPrincipal);
+}
+.containerSetores::-webkit-scrollbar {
+    display: none;
+}
+.boxTitleSetores {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+    border-bottom: solid 0.1rem var(--corSecundaria);
+}
+.boxTitleSetores p {
+    width: 40%;
+    margin: 0;
+    padding: 0;
+    font-size: 1.3rem;
+    color: var(--corSecundaria);
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.setorDinamico {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    gap: 1vw;
+    padding-block: 0.5vh;
+    align-items: center;
+    border-radius: 0.3vw;
+}
+.setorName {
+    width: 40%;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: var(--corSecundaria);
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.boxSelectGestor {
+    width: 40%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.selectGestor {
+    width: 60%;
+    height: 80%;
+    outline: none;
+    font-size: 0.8rem;
+    color: var(--corSecundaria);
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+    border-radius: 0.3vw;
+    background-color: transparent;
+    border: solid 0.1rem var(--corSecundaria);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.selectGestor option {
+    color: var(--corPrincipal);
+}
+.blockSetor {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1vw;
+}
+.checkbox-round {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.checkbox-round input[type="checkbox"] {
+    display: none;
+}
+.checkbox-round label {
+    width: 1rem;
+    height: 1rem;
+    border: 0.1rem solid var(--corSecundaria);
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+.checkbox-round input[type="checkbox"]:checked + label {
+    background-color: var(--corPrincipal);
+}
+
+
+.boxInput {
+    width: 45%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.3rem;
+    margin: 0;
+    padding: 0;
+}
+.boxInput h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+}
+
+.checkRepresentante {
+    width: 95%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.checkRepresentante p {
+    font-size: 0.9rem;
+    color: var(--corPrincipal);
+}
+.checkRepresentante input {
+    cursor: pointer;
+}
+.inputsCadastro {
+    width: 95%;
+    height: 30%;
+    background-color: transparent;
+    font-size: 1rem;
+    font-family: "Rubik", sans-serif;
+    color: var(--corPrincipal);
+    border: solid 0.1rem #ccc;
+    border-radius: 0.2rem;
+}
+.inputsCadastro:focus {
+    outline: none; /* Remove o contorno padrão */
+
+}
+.blockButton {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.CriarUser {
+    border-radius: 5rem;
+    background-color: white;
+    border: solid 0.15rem var(--corPrincipal);
+    color: var(--corPrincipal);
+    transition: ease-in-out 0.5s;
+    font-size: 1.2rem;
+    font-family: "Rubik", sans-serif;
+    font-weight: 500;
+    padding-inline: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.CriarUser:hover {
+    box-shadow: 0rem 0rem 0.5rem var(--corPrincipal);
+    background-color: var(--corPrincipal);
+    color: var(--corSecundaria);
+}
+
+.popupUsers {
+    width: 95%;
+    height: 70%;
+    top: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5vw;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    background: white;
+    border: solid 0.2rem var(--corPrincipal);
+    box-shadow: 0 0 1rem black;
+    box-sizing: border-box;
+}
+
+.popupUsers.aberto {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.closeUser {
+    position: absolute;
+    top: -1%;
+    right: 0.5%;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: ease-in-out 0.4s;
+}
+
+.closeUser:hover {
+    color: red;
+}
+.btnCadastro {
+    padding: 0.4rem;
+    padding-inline: 0.8rem;
+    color: var(--corSecundaria);
+    font-size: 1.2rem;
+    background-color: var(--corPrincipal);
+    border: none;
+    border-radius: 2rem;
+    outline: none;
+    cursor: pointer;
+    font-family: "Rubik", sans-serif;
+    font-weight: 600;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.btnCadastro:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.3);
+}
+.btnCadastro:active {
+    transform: translateY(0);
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+.titleUser {
+    color: var(--corPrincipal);
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+.tableUsers {
+    width: 95%;
+    height: 70%;
+    border: solid 0.2rem var(--corPrincipal);
+    border-radius: 0.3rem;
+}
+.lineTitleUser {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: solid 0.15rem var(--corPrincipal);
+}
+.titleTableUser {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    width: 12%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.containerUsers {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1vw;
+    gap: 1.5vh;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+.containerUsers::-webkit-scrollbar {
+    width: 0.5rem;
+}
+.containerUsers::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+.containerUsers::-webkit-scrollbar-thumb {
+    background-color: var(--corPrincipal);
+    border-radius: 0.2rem;
+}
+.lineUser {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.lineUser p {
+    width: 12%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden; /* Oculta o excesso de texto */
+    text-overflow: ellipsis; /* Adiciona "..." quando o texto ultrapassa o limite */
+    padding-block: 0.5vh;
+    cursor: default;
+}
+.lineUser p i {
+    width: 12%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: ease-in-out 0.4s;
+}
+.lineUser p i:hover {
+    text-shadow: 0rem 0rem 0.5rem var(--corPrincipal);
+}
+
+.popupEditarUser {
+    width: 40%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.3vw;
+    background: white;
+    border: solid 0.2rem var(--corSecundaria);
+    box-shadow: 0 0 1rem var(--corPrincipal);
+}
+.popupEditarUser.aberto {
+    transform: scale(1);
+    opacity: 1;
+}
+.titleEditarUser {
+    margin: 0;
+    padding: 0;
+    color: var(--corPrincipal);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+.lineInputsUser {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.boxInputUser {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.boxInputUser h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--corPrincipal);
+}
+.containerSetoresUser {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1vh;
+    padding: 0.5vw;
+    background-color: var(--corPrincipal);
+    border: solid 0.2rem var(--corSecundaria);
+    border-radius: 0.5rem;
+    overflow-y: auto;
+    box-shadow: 0 0 0.5rem var(--corPrincipal);
+}
+.containerSetoresUser::-webkit-scrollbar {
+    display: none;
+}
+.blockInputSoloUser {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.blockInputSoloUser h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+}
+.boxTitleSetoresUser {
+    width: 100%;
+    height: 10%;
+    padding-bottom: 0.3vh;
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+    border-bottom: solid 0.1rem var(--corSecundaria);
+}
+.boxTitleSetoresUser p {
+    width: 40%;
+    margin: 0;
+    padding: 0;
+    font-size: 1.1rem;
+    color: var(--corSecundaria);
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.blockSetorUser {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1vw;
+}
+.selectGestorUser {
+    width: 60%;
+    height: 80%;
+    outline: none;
+    font-size: 1rem;
+    color: var(--corSecundaria);
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+    border-radius: 0.3vw;
+    background-color: transparent;
+    border: solid 0.1rem var(--corSecundaria);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.selectGestor option {
+    color: var(--corPrincipal);
+}
+
+/* Personalização do popup de empresa */
+.btnEmpresa {
+    padding-inline: 0.8vw;
+    background-color: var(--corSecundaria);
+    border-radius: 3vw;
+    cursor: pointer;
+    border: solid 0.15rem transparent;
+    font-size: 1.2rem;
+    color: var(--corPrincipal);
+    font-weight: 600;
+    font-family: "Rubik", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Sombra inicial suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out
+}
+.btnEmpresa:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-2px);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.btnEmpresa:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.btnPopupRelatorio {
+    padding-inline: 0.8vw;
+    background-color: var(--corSecundaria);
+    border-radius: 3vw;
+    cursor: pointer;
+    border: solid 0.15rem transparent;
+    font-size: 1.2rem;
+    color: var(--corPrincipal);
+    font-weight: 600;
+    font-family: "Rubik", sans-serif;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    /* Sombra inicial suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out
+}
+.btnPopupRelatorio:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-2px);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.btnPopupRelatorio:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.popupEmpresa {
+    width: 95%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 2.5%;
+    gap: 2vh;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 0 1rem black;
+}
+.popupEmpresa.aberto {
+    transform: scale(1);
+    opacity: 1;
+}
+.popup-content-wrapper {
+    position: relative; /* Essencial para que os filhos com position: absolute se alinhem a ele */
+    flex-grow: 1;      /* Garante que o wrapper ocupe o espaço disponível se o dialog for flex */
+    overflow: hidden;    /* Esconde os blocos quando eles são animados para fora da tela */
+    width: 100%;
+}
+
+.blockCorNome, .blockSetorAreas {
+    position: absolute;  /* Empilha os blocos um sobre o outro */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Mantém suas propriedades de display flex para alinhar o conteúdo interno */
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    /* Adicione um padding para não colar nas bordas */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.closeEmpresa {
+    font-size: 2vw;
+    position: absolute;
+    top: -1%;
+    right: 0.5%;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+    color: var(--corPrincipal);
+}
+.closeEmpresa:hover {
+    color: red;
+}
+.blockSetorAreas {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+/* Garanta que o segundo bloco comece escondido */
+.blockSetorAreas {
+    display: none;
+}
+.blockSetores {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1rem;
+    gap: 1.5rem;
+}
+.blockAreas {
+    width: 65%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 1rem;
+    gap: 1.5rem;
+}
+.titleEditarEmpresa {
+    font-size: 1.5vw;
+    color: var(--corPrincipal);
+    margin-top: 5vh;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+.titleEditarSetores {
+    margin-top: 2rem;
+    width: 100%;
+    font-size: 1.5vw;
+    color: var(--corPrincipal);
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.addSetor {
+    border-radius: 3vw;
+    padding: 0.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: "Rubik", sans-serif;
+    border: none;
+    font-weight: 500;
+    background-color: var(--corPrincipal);
+    color: var(--corSecundaria);
+}
+.addSetor:hover {
+    box-shadow: 0rem 0rem 1rem var(--corPrincipal);
+}
+.tableSetores {
+    width: 100%;
+    height: 70%;
+    border-radius: 0.5rem;
+    padding: 0.5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0 0 0.7rem var(--corPrincipal);
+}
+.lineTitleSetores {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 0.2vw;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid 0.1rem var(--corPrincipal);
+}
+.lineTitleSetores p {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-size: 1.3rem;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.containerEditarSetores {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5vw;
+    gap: 1vh;
+    overflow-y: auto;
+}
+.containerEditarSetores::-webkit-scrollbar {
+    display: none;
+}
+.lineSetores {
+    width: 100%;
+    padding-block: 0.3vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.iconExcluirSetor {
+    width: auto;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--corPrincipal);
+    cursor: pointer;
+    transition: ease-in-out 0.4s; 
+    padding-inline: 0.5rem;
+}
+.iconExcluirSetor:hover {
+    text-shadow: 0 0 0.5rem var(--corPrincipal);
+}
+.inputSetor {
+    flex-grow: 1;
+    width: auto;
+    background-color: transparent;
+    font-size: 1rem;
+    font-family: "Rubik", sans-serif;
+    color: var(--corPrincipal);
+    border: solid 0.1rem #ccc;
+    border-radius: 0.2rem;
+}
+.inputSetor:focus {
+    border: solid 0.1rem var(--corPrincipal);
+    outline: none; /* Remove o contorno padrão */
+}
+.titleEditarTipoDemanda{
+    width: 100%;
+    font-size: 1.5vw;
+    color: var(--corPrincipal);
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.addDemandaType {
+    border-radius: 3vw;
+    padding: 0.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    background-color: var(--corPrincipal);
+    color: var(--corSecundaria);
+    font-family: "Rubik", sans-serif;
+    font-weight: 500;
+}
+.addDemandaType:hover {
+    box-shadow: 0rem 0rem 1rem var(--corPrincipal);
+}
+.tableTipoDemanda {
+    padding: 0.5vw;
+    width: 100%;
+    height: 70%;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-shadow: 0 0 0.7rem var(--corPrincipal);
+}
+.containerTipoDemanda {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5vw;
+    gap: 2vh;
+    overflow-y: auto;
+}
+.containerTipoDemanda::-webkit-scrollbar {
+    display: none;
+}
+.lineTipoDemanda {
+    width: 100%;
+    height: 10%;
+    padding-block: 0.3vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.containerTitleDemandas {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid 0.2rem var(--corPrincipal);
+}
+.containerTitleDemandas p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.containerTitleDemandas p:first-child {
+    width: 40%;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.btnSalvarEdicao {
+    position: absolute;
+    bottom: 0%;
+    left: 46.5%;
+    padding-inline: 1vw;
+    font-size: 1.5rem;
+    border: solid 0.15rem var(--corPrincipal);
+    border-radius: 3rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: ease-in-out 0.4s;
+    font-family: "Rubik", sans-serif;
+    font-weight: 500;
+    background-color: var(--corPrincipal);
+    color: var(--corSecundaria);
+}
+.btnSalvarEdicao:hover {
+    box-shadow: 0rem 0rem 1rem var(--corPrincipal);
+}
+
+.detailsTipoDemanda {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.summaryTipoDemanda {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 0.2vw;
+    border-bottom: solid 0.15rem var(--corPrincipal);
+}
+.nomeTipoDemanda {
+    width: 50%;
+    background-color: transparent;
+    font-size: 1rem;
+    font-family: "Rubik", sans-serif;
+    color: var(--corPrincipal);
+    border: solid 0.1rem #979797;
+    border-radius: 0.2rem;
+}
+.nomeTipoDemanda:focus {
+    border: solid 0.1rem var(--corPrincipal);
+    outline: none; /* Remove o contorno padrão */
+}
+.iconEditDemanda {
+    width: 4%;
+    font-size: 1.2rem;
+    color: var(--corPrincipal);
+    cursor: pointer;
+    text-align: center;
+    transition: ease-in-out 0.4s;
+}
+.iconEditDemanda:hover {
+    text-shadow: 0 0 0.5rem var(--corPrincipal);
+}
+.iconDeleteDemanda {
+    width: 6%;
+    font-size: 1.2rem;
+    color: var(--corPrincipal);
+    cursor: pointer;
+    text-align: center;
+    transition: ease-in-out 0.4s;
+}
+.iconDeleteDemanda:hover {
+    text-shadow: 0 0 0.5rem var(--corPrincipal);
+}
+.iconChevron {
+    color: var(--corPrincipal);
+    cursor: pointer;
+}
+.containerEtapas {
+    width: 55vw;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5vw;
+    gap: 1vh;
+    overflow-y: auto;
+    border: solid 0.15rem var(--corPrincipal);
+    border-radius: 0.5rem;
+    margin-bottom: 2vh;
+}
+.containerEtapas::-webkit-scrollbar {
+    display: none;
+}
+.containerButtonAddEtapa {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.addEtapa {
+    font-size: 1rem;
+    background-color: var(--corPrincipal);
+    color: var(--corSecundaria);
+    cursor: pointer;
+    transition: ease-in-out 0.4s;
+    border: none;
+    border-radius: 3rem;
+    padding-inline: 1vw;
+    outline: none;
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+}
+.addEtapa:hover {
+    background-color: var(--corSecundaria);
+    color: var(--corPrincipal);
+    box-shadow: 0rem 0rem 0.5rem var(--corPrincipal);
+}
+/* Estilo para o ícone de 'pegar' para arrastar */
+.drag-handle {
+    cursor: grab;
+    color: #a0a0a0; /* Uma cor mais sutil */
+    margin-right: 10px; /* Espaçamento */
+}
+/* Estilo para o elemento que está sendo arrastado */
+.lineEtapas.dragging {
+    opacity: 0.5;
+    background: #f0f0f0;
+}
+/* Ajuste no layout para acomodar o novo ícone */
+.lineEtapas {
+    width: 100%;
+    /* height: 20%; -> Remova a altura fixa para ser mais flexível */
+    min-height: 40px; /* Use min-height em vez de height */
+    padding-block: 0.5rem; /* Aumentar um pouco o padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.lineEtapas i {
+    color: var(--corPrincipal);
+    font-size: 1.2vw;
+    cursor: pointer;
+}
+.lineEtapas i:hover {
+    text-shadow: 0 0 0.5rem var(--corPrincipal);
+}
+.containerNomeEtapa {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+}
+.containerNomeEtapa p {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+} 
+.nomeEtapa {
+    width: 70%;
+    font-size: 1rem;
+    color: var(--corPrincipal);
+    border: solid 0.15rem var(--corPrincipal);
+    border-radius: 0.5rem;
+    outline: none;
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+}
+.containerSetoresEtapa {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+}
+.containerSetoresEtapa p {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+}
+.setoresEtapa {
+    width: 80%;
+    font-size: 1rem;
+    color: var(--corPrincipal);
+    border: solid 0.15rem var(--corPrincipal);
+    border-radius: 0.5rem;
+    outline: none;
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+}
+.containerValidacaoEtapa {
+    width: 12%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.containerValidacaoEtapa p {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 300;
+}
+.checkboxEtapa {
+    scale: 1.3;
+}
+.iconEditEtapa {
+    width: 5%;
+    font-size: 1.2rem;
+    color: var(--corPrincipal);
+    cursor: pointer;
+    text-align: center;
+    transition: ease-in-out 0.4s;
+}
+.iconEditEtapa:hover {
+    text-shadow: 0 0 0.5rem var(--corPrincipal);
+}
+.iconDeleteEtapa {
+    width: 5%;
+    font-size: 1.2rem;
+    color: var(--corPrincipal);
+    cursor: pointer;
+    text-align: center;
+    transition: ease-in-out 0.4s;
+}
+.iconDeleteEtapa:hover {
+    text-shadow: 0 0 0.5rem var(--corPrincipal);
+}
+
+.blockCorNome {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.btn-aba {
+    width: 15%;
+    position: absolute;
+    top: 0.5%;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    border: none;
+    cursor: pointer;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    transition: all 0.3s ease-in-out;
+    z-index: 999;
+}
+#editarPersonalizacao {
+    left: 34.7%;
+}
+#editarAreas {
+    right: 34.7%;
+}
+/* Classe para o botão ATIVO */
+.btn-ativo {
+    background-color: var(--corPrincipal);
+    color: var(--corSecundaria);
+    border-bottom: solid 0.15rem var(--corSecundaria);
+}
+/* Classe para o botão INATIVO */
+.btn-inativo {
+    background-color: #c1c1c1;
+    color: var(--corPrincipal);
+    border-bottom: solid 0.15rem var(--corPrincipal);
+}
+/* O hover agora só se aplica ao botão que está inativo */
+.btn-inativo:hover {
+    background-color: var(--corPrincipal);
+    color: var(--corSecundaria);
+    border-bottom: solid 0.15rem var(--corSecundaria);
+}
+
+.boxNomeEmpresa {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.boxNomeEmpresa h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.3vw;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+}
+.nomeEmpresa {
+    width: 50%;
+    font-size: 1.1vw;
+    color: var(--corPrincipal);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 0.15vw solid #ccc;
+}
+.boxLogo {
+    width: 100%;
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.boxLogo h3 {
+    font-size: 1.3vw;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+.contenInputLogo {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.logoEmpresa {
+    width: 35%;
+    font-size: 1vw;
+    padding: 8px;
+    color: white;
+    border: 1px solid var(--corSecundaria);
+    border-radius: 6px;
+    background-color: var(--corPrincipal);
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+.logoEmpresa:hover {
+    border-color: var(--corSecundaria);
+}
+.logoEmpresa::file-selector-button {
+    padding: 6px 12px;
+    border: solid 0.15rem var(--corSecundaria);
+    background-color: transparent;
+    color: white;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: ease-in-out 0.4s;
+}
+.logoEmpresa::file-selector-button:hover {
+    background-color: var(--corSecundaria);
+    color: var(--corPrincipal);
+    box-shadow: 0 0 0.2rem var(--corSecundaria);
+}
+.logoPreview {
+    width: 25%;
+    height: 90%;
+    border: solid 0.15rem var(--corPrincipal);
+    border-radius: 0.3vw;
+    background-color: #ccc;
+}
+
+.boxCores {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.boxCores h3 {
+    font-size: 1.3vw;
+    color: var(--corPrincipal);
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+.contenCores {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: white;
+}
+.color-options {
+    width: 35%;
+    height: 80%;
+    border-radius: 0.5vw;
+    padding: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: var(--corPrincipal);
+}
+
+.color-option {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0.3vw;
+    transition: border 0.3s;
+}
+.color-option.selected {
+    background-color: gray;
+}
+.color-circle {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+}
+.color-label {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.popupLog {
+    width: 95%;
+    height: 95%;
+    padding: 0;
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    box-sizing: border-box;
+}
+.closeLogs {
+    position: absolute;
+    font-size: 2rem;
+    top: 0%;
+    right: 1%;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+.closeLogs:hover {
+    color: red;
+}
+.containerPopupLog {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+.titlePopupLog {
+    height: 5%;
+    font-weight: 500;
+}
+.containerTablesLog {
+    width: 100%;
+    height: 85%; 
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+.containerAbasLog {
+    width: 95%;
+    height: 5%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.abas {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+.subTitleLogs {
+    padding-inline: 0.5rem;
+    margin: 0;
+    color: var(--corPrincipal);
+    font-weight: 600;
+    background-color: #cdcdcd;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    border-bottom: solid 0.15rem var(--corPrincipal);
+    transition: 0.3s ease-in-out;
+}
+.subTitleLogs:hover {
+    cursor: pointer;
+    background-color: #9c9c9c;
+}
+.subTitleLogs.aba-ativa {
+    background-color: var(--corPrincipal);
+    color: var(--corSecundaria); /* Cor de destaque */
+    border-bottom-color: var(--corSecundaria); /* Borda de destaque */
+}
+.inputPesquisa {
+    width: 30%;
+    font-size: 1rem;
+    font-weight: 400;
+    border: none;
+    color: var(--corPrincipal);
+    border-bottom: solid 0.15rem var(--corPrincipal);
+    outline: none;
+}
+.inputPesquisa:focus {
+    border-bottom: solid 0.12rem var(--corSecundaria);
+}
+.tableLog {
+    width: 95%;
+    height: 80%;
+    background-color: var(--corPrincipal);
+    box-shadow: 0rem 0rem 0.5rem grey;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.lineTitlePopupLogs {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.lineTitlePopupLogs h3 {
+    width: 16.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 0;
+    gap: 0.5rem;
+    color: var(--corSecundaria);
+}
+.header-user-view {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-user-view h3 {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 0;
+    gap: 0.5rem;
+    color: var(--corSecundaria);
+}
+
+.contentTableLog {
+    width: 100%;
+    height: 90%;
+    padding-block: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    overflow-y: auto;
+}
+.contentTableLog::-webkit-scrollbar {
+    display: none;
+}
+.lineTableLog {
+    width: 100%;
+    display: table; /* Muda para o layout de tabela */
+    table-layout: fixed; /* Força as colunas a terem larguras fixas */
+    transition: ease-in-out 0.3s;
+}
+.lineTableLog:hover {
+    cursor: pointer;
+    background-color: #6f6f6f;
+    border-radius: 0.5rem;
+}
+.lineTableLog p {
+    width: 16.5%; /* Agora respeitado rigorosamente */
+    display: table-cell; /* Faz o 'p' se comportar como uma célula <td> */
+    vertical-align: middle; /* Equivalente ao align-items: center */
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Estilos adicionais */
+    padding: 0.3rem;
+    box-sizing: border-box;
+    color: white;
+    font-weight: 400;
+    font-size: 1rem;
+} 
+.lineUsersTableLog {
+    width: 100%;
+    display: table; /* Muda para o layout de tabela */
+    table-layout: fixed; /* Força as colunas a terem larguras fixas */
+    transition: ease-in-out 0.3s;
+}
+
+.lineUsersTableLog p {
+    width: 20%; /* Agora respeitado rigorosamente */
+    display: table-cell; /* Faz o 'p' se comportar como uma célula <td> */
+    vertical-align: middle; /* Equivalente ao align-items: center */
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Estilos adicionais */
+    padding: 0.3rem;
+    box-sizing: border-box;
+    color: white;
+    font-weight: 400;
+    font-size: 1rem;
+} 
+.lineUsersTableLog:hover {
+    cursor: pointer;
+    background-color: #9c9c9c;
+    border-radius: 0.5rem;
+}
+.contentAction {
+    width: 60%; /* Agora respeitado rigorosamente */
+    display: table-cell; /* Faz o 'p' se comportar como uma célula <td> */
+    vertical-align: middle; /* Equivalente ao align-items: center */
+    text-align: center;
+    /* Estilos adicionais */
+    padding: 0.3rem;
+    box-sizing: border-box;
+    color: white;
+    font-weight: 400;
+    font-size: 1rem;
+} 
+.contentDate {
+    width: 20%; /* Agora respeitado rigorosamente */
+    display: table-cell; /* Faz o 'p' se comportar como uma célula <td> */
+    vertical-align: middle; /* Equivalente ao align-items: center */
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Estilos adicionais */
+    padding: 0.3rem;
+    box-sizing: border-box;
+    color: white;
+    font-weight: 400;
+    font-size: 1rem;
+}
+.lineUsersTableLog:hover {
+    cursor: pointer;
+    background-color: #9c9c9c;
+    border-radius: 0.5rem;
+}
+
+.lineActionsTableLog {
+    width: 100%;
+    display: table; /* Muda para o layout de tabela */
+    table-layout: fixed; /* Força as colunas a terem larguras fixas */
+    transition: ease-in-out 0.3s;
+}
+.contentAction {
+    width: 60%; /* Agora respeitado rigorosamente */
+    display: table-cell; /* Faz o 'p' se comportar como uma célula <td> */
+    vertical-align: middle; /* Equivalente ao align-items: center */
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Estilos adicionais */
+    padding: 0.3rem;
+    box-sizing: border-box;
+    color: white;
+    font-weight: 400;
+    font-size: 1rem;
+} 
+.contentDate {
+    width: 20%; /* Agora respeitado rigorosamente */
+    display: table-cell; /* Faz o 'p' se comportar como uma célula <td> */
+    vertical-align: middle; /* Equivalente ao align-items: center */
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Estilos adicionais */
+    padding: 0.3rem;
+    box-sizing: border-box;
+    color: white;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.filter-header {
+    position: relative; /* Essencial para posicionar o menu filho */
+    cursor: pointer;
+}
+
+/* 2. Estiliza o menu dropdown */
+.filter-menu {
+    display: none; /* Escondido por padrão */
+    position: absolute; /* Posicionado em relação ao .filter-header */
+    top: 100%; /* Aparece logo abaixo do cabeçalho */
+    left: 0;
+    z-index: 10; /* Garante que o menu fique sobre o conteúdo da tabela */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 200px; /* Largura mínima para o menu */
+    padding: 10px;
+}
+
+/* 3. Classe 'visible' que será adicionada via JavaScript para mostrar o menu */
+.filter-menu.visible {
+    display: block;
+}
+
+/* 4. Estilos internos do menu para uma boa aparência */
+.filter-options {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+}
+
+.filter-options li {
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #333;
+}
+
+.filter-options li label {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre o checkbox e o texto */
+    cursor: pointer;
+}
+
+.filter-actions {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
+}
+
+.filter-actions button {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+}
+.apply-filter-btn {
+    background-color: #28a745 !important; /* Verde */
+    color: white;
+    border-color: #28a745;
+}
+
+.btnRelatorio {
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding-inline: 1rem;
+    padding: 0.5rem;
+    background-color: var(--corPrincipal);
+    color: var(--corSecundaria);
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    /* Sombra inicial suave */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.aviso-tabela-vazia {
+    color: white;
+}
+.btnRelatorio:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-2px);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.btnRelatorio:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.modo-relatorio .tableLog {
+    background-color: #ffffff !important;  /* Fundo branco */
+    border: 1px solid #000000;          /* Borda preta simples */
+    box-shadow: none !important;            /* Remove qualquer sombra */
+}
+/* Deixa o texto do cabeçalho (N° Demanda, Demanda, etc.) preto */
+.modo-relatorio .lineTitlePopupLogs h3 {
+    color: #000000 !important; /* Texto preto */
+    font-weight: 600;         /* Um pouco mais de destaque */
+}
+/* Oculta os ícones de filtro (não fazem sentido no PDF) */
+.modo-relatorio .filter-icon {
+    display: none !important;
+}
+/* Garante que os menus de filtro não apareçam */
+.modo-relatorio .filter-menu {
+    display: none !important;
+}
+/* Deixa o texto das linhas da tabela com cor escura */
+.modo-relatorio .lineTableLog p {
+    color: #333333 !important; /* Texto cinza bem escuro (ou #000 para preto) */
+}
+.modo-relatorio .contentTableLog {
+    overflow-y: visible !important;
+}

@@ -1,0 +1,552 @@
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Rubik", sans-serif;
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/static/img/fundoGerenciador.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-clip: border-box; /* Garante que o desfoque fique dentro do contêiner */
+    z-index: -1;
+}
+.global {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.boxLogin {
+    width: 25%;
+    height: 55%;
+    padding: 1vw;
+    border-radius: 0.5vw;
+    box-shadow: 0px 0px 10px #B89A5F;
+    background-color: #242f4d86;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5vh;
+    margin-bottom: 5vh;
+}
+.boxLogin a {
+    text-decoration: none;
+    font-size: 1vw;
+    color: #B89A5F;
+    cursor: pointer;
+}
+.boxTitle {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.titleLogin {
+    font-size: 3vw;
+    font-weight: 600;
+    color: #B89A5F;
+}
+.boxInputs {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.password-container {
+    position: relative;
+    width: 70%; 
+}
+.toggle-password {
+    position: absolute; /* Posiciona em relação ao .password-container */
+    top: 50%;
+    right: 15px; /* Distância fixa da borda direita do container */
+    transform: translateY(-50%); /* Centraliza o ícone verticalmente */
+    cursor: pointer;
+    color: #888;
+}
+
+.inputSenha {
+    width: 100%;
+    padding-right: 35px; /* Espaço para o ícone! Ajuste se necessário. */
+    box-sizing: border-box;
+    font-size: 1.2vw;
+    border: none;
+    border-bottom: 0.15vw solid #B89A5F;
+    background-color: transparent !important;
+    outline: none;
+    padding: 0.4rem;
+    font-family: "Rubik", sans-serif;
+    color: #B89A5F;
+}
+.inputSenha:-webkit-autofill,
+.inputSenha:-webkit-autofill:hover,
+.inputSenha:-webkit-autofill:focus,
+.inputSenha:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s !important; /* Atraso para evitar a cor */
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: #B89A5F !important;
+}
+.inputLogin {
+    width: 70%;
+    font-size: 1.2vw;
+    border: none;
+    border-bottom: 0.15vw solid #B89A5F;
+    background-color: transparent !important;
+    outline: none;
+    padding: 0.4rem;
+    font-family: "Rubik", sans-serif;
+    color: #B89A5F;
+}
+.inputLogin:-webkit-autofill,
+.inputLogin:-webkit-autofill:hover,
+.inputLogin:-webkit-autofill:focus,
+.inputLogin:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s !important; /* Atraso para evitar a cor */
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: #B89A5F !important;
+}
+.errorMessage {
+    color: red;
+    font-size: 1rem;
+}
+.btnLogin {
+    padding-inline: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 0.15rem transparent;
+    color: #242f4d;
+    background-color: #B89A5F;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 2rem;
+    transition: ease-in-out 0.4s;
+    cursor: pointer;
+    /* Sombra inicial suave */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.btnLogin:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-0.125rem);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.btnLogin:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+}
+.boxLogo {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.boxLogo {
+    transform: scale(0.7);
+}
+
+.boxPrimeiroAcesso {
+    width: 25%;
+    height: 55%;
+    padding: 1vw;
+    border-radius: 0.5vw;
+    box-shadow: 0px 0px 10px #B89A5F;
+    background-color: #242f4d86;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5vh;
+    margin-bottom: 5vh;
+    opacity: 0;
+}
+/* Botão de voltar */
+.btnVoltar {
+    width: 25%;
+    height: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #B89A5F;
+    color: #242f4d;
+    font-size: 1.2vw;
+    font-weight: 700;
+    border-radius: 5vw;
+    transition: ease-in-out 0.4s;
+    cursor: pointer;
+    /* Sombra inicial suave */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.btnVoltar:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-0.125rem);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.btnVoltar:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+}
+
+.boxRecuperarSenha {
+    width: 25%;
+    height: 55%;
+    padding: 1vw;
+    border-radius: 0.5vw;
+    box-shadow: 0px 0px 10px #B89A5F;
+    background-color: #242f4d86;
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 5vh;
+    opacity: 0;
+}
+
+/* Rotação para o lado direito (Primeiro Acesso) */
+@keyframes rotateOutRight {
+    from {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: rotateY(90deg);
+        opacity: 0;
+    }
+}
+
+@keyframes rotateInRight {
+    from {
+        transform: rotateY(-90deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+/* Rotação para o lado esquerdo (Esqueci minha senha) */
+@keyframes rotateOutLeft {
+    from {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: rotateY(-90deg);
+        opacity: 0;
+    }
+}
+
+@keyframes rotateInLeft {
+    from {
+        transform: rotateY(90deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+.boxVoltarLogin {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.boxInputsPrimeiroAcesso {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.titlePrimeiroAcesso {
+    font-size: 1.2rem;
+    color: #B89A5F;
+    font-weight: 400;
+    text-align: center;
+    font-family: "Rubik", sans-serif;
+    padding: 0;
+    margin: 0;
+}
+.boxGerarSenha {
+    width: 100%;
+    height: 60%;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.boxSenhaAcesso {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.boxInserirEmail {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.boxErroMessage {
+    width: 93%;
+    height: 40%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.boxErroMessage h3 {
+    font-size: 1rem;
+    color: red;
+    font-weight: 300;
+    padding: 0;
+    margin: 0;
+    margin-right: 0.3rem;
+}
+.boxErroMessage i {
+    font-size: 1rem;
+    color: red;
+}
+
+.btnCriarSenha {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0.5rem;
+    padding-inline: 0.8vw;
+    border: none;
+    outline: none;
+    background-color: #B89A5F;
+    color: #242f4d;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 5vw;
+    transition: ease-in-out 0.4s;
+    cursor: pointer;
+    /* Sombra inicial suave */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.btnCriarSenha:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-0.125rem);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.btnCriarSenha:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+}
+.inputPrimeiroAcesso {
+    width: 70%;
+    height: 20%;
+    font-size: 1.2vw;
+    border: none;
+    border-bottom: 0.15vw solid #B89A5F;
+    background-color: transparent !important;
+    outline: none;
+    padding: 0.2rem;
+    font-family: "Rubik", sans-serif;
+    color: #B89A5F;
+}
+.inputPrimeiroAcesso:-webkit-autofill,
+.inputPrimeiroAcesso:-webkit-autofill:hover,
+.inputPrimeiroAcesso:-webkit-autofill:focus,
+.inputPrimeiroAcesso:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s !important; /* Atraso para evitar a cor */
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+    -webkit-text-fill-color: var(--corSecundaria) !important;
+}
+.btnEntrar {
+    width: 25%;
+    height: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0.5rem;
+    border: none;
+    background-color: #B89A5F;
+    color: #242f4d;
+    font-size: 1.2vw;
+    font-weight: 700;
+    border-radius: 2rem;
+    /* Sombra inicial suave */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+    /* Transição suave para todas as propriedades */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+}
+.btnEntrar:hover {
+    /* Move o botão 2px para cima */
+    transform: translateY(-0.125rem);
+    /* Aumenta a sombra para dar a sensação de elevação */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+/* Efeito ao clicar */
+.btnEntrar:active {
+    /* Move para a posição original e remove a sombra do hover */
+    transform: translateY(0);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+}
+.boxEmailVerificacao {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-direction: column;
+}
+#boxCodigoVerificacao {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.code-container {
+    width: 90%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.code-input {
+    width: 15%;
+    height: 85%;
+    font-size: 1.3rem;
+    text-align: center;
+    border: solid 0.2rem #B89A5F;
+    border-radius: 5px;
+    background-color: #242f4d;
+    color: #B89A5F;
+    text-transform: uppercase;
+    outline: none;
+}
+
+.code-input:focus {
+    background-color: #B89A5F;
+    color: #242f4d;
+    box-shadow: 0rem 0rem 0.2rem #B89A5F;
+}
+.titleRecuperarSenha {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #B89A5F;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.btnVerificarCod {
+    padding: 0.5rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #242f4d;
+    border: solid 0.15rem #B89A5F;
+    color: #B89A5F;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: ease-in-out 0.4s;
+}
+.btnVerificarCod:hover {
+    background-color: #B89A5F;
+    color: #242f4d;
+    box-shadow: 0rem 0rem 0.2rem #B89A5F;
+}
+.btnEnviarCod {
+    width: 40%;
+    height: 10%;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #242f4d;
+    border: solid 0.15rem #B89A5F;
+    color: #B89A5F;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: ease-in-out 0.4s;
+}
+.btnEnviarCod:hover {
+    background-color: #B89A5F;
+    color: #242f4d;
+    box-shadow: 0rem 0rem 0.2rem #B89A5F;
+}
+.boxRedefinirSenha {
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+.boxRedefinirSenha h3 {
+    padding: 0;
+    margin: 0;
+    color: #B89A5F;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.btnRedefinirSenha {
+    padding: 0.5rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #242f4d;
+    border: solid 0.15rem #B89A5F;
+    color: #B89A5F;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: ease-in-out 0.4s;
+}
+.btnRedefinirSenha:hover {
+    background-color: #B89A5F;
+    color: #242f4d;
+    box-shadow: 0rem 0rem 0.2rem #B89A5F;
+}
+.boxInputRedefinir {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
